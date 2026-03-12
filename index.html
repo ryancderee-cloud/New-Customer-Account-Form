@@ -1,175 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>New Customer Account Form – De Ree UK</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--navy:#1A315A;
+--orange:#EC7F22;
+--bg:#f5f7fa;
+--border:#e1e4ea;
+--text-muted:#6a7280;
+}
+
+body{
+font-family:Barlow,sans-serif;
+background:var(--bg);
+margin:0;
+padding:40px;
+color:#333;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+background:#fff;
+padding:40px;
+border-radius:10px;
+box-shadow:0 6px 20px rgba(0,0,0,.05);
+}
+
+h1{
+font-family:"Barlow Condensed",sans-serif;
+letter-spacing:1px;
+background:var(--navy);
+color:#fff;
+padding:20px;
+margin:-40px -40px 30px -40px;
+}
+
+.form-section{
+margin-bottom:32px;
+}
+
+.section-title{
+font-family:"Barlow Condensed",sans-serif;
+color:var(--navy);
+font-size:20px;
+margin-bottom:16px;
+}
+
+.field-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:16px;
+}
+
+.field.full{
+grid-column:1 / -1;
+}
+
+label{
+font-size:13px;
+font-weight:600;
+display:block;
+margin-bottom:5px;
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+border:1px solid var(--border);
+border-radius:5px;
+font-size:14px;
+font-family:Barlow;
+}
+
+textarea{
+min-height:70px;
+}
+
+.option-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+}
+
+.option-item{
+display:flex;
+gap:6px;
+align-items:center;
+font-size:14px;
+}
+
+.submit-area{
+text-align:center;
+margin-top:40px;
+}
+
+button{
+background:var(--navy);
+color:#fff;
+border:none;
+padding:14px 28px;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#13274a;
+}
+
+.req{
+color:red;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>NEW CUSTOMER ACCOUNT FORM</h1>
+
+<form>
+
 <!-- CLIENT INFORMATION -->
- <div class="form-section">
- <div class="section-title">Client Information</div>
- <div class="field-grid">
- <div class="field full"><label>Company Name <span class="req">*</span></label><input type="text" name="company_name" placeholder="Trading or registered company name" required></div>
- <div class="field"><label>VAT Number</label><input type="text" name="vat_number" placeholder="GB 000 0000 00" required></div>
- <div class="field"><label>Website</label><input type="text" name="website" placeholder="https://"></div>
- <div class="field"><label>Year Company Established</label><input type="text" name="year_established" placeholder="e.g. 2005" required></div>
- <div class="field"><label>Telephone Number</label><input type="tel" name="telephone" required></div>
- <div class="field"><label>Fax Number</label><input type="tel" name="fax"></div>
- <div class="field full"><label>Email Address <span class="req">*</span></label><input type="email" name="email" placeholder="accounts@example.co.uk" required></div>
- <div class="field full"><label>Invoice and Statement Address</label><textarea name="invoice_address" placeholder="Street, town, county…" required></textarea></div>
- <div class="field"><label>Post Code</label><input type="text" name="postcode" required></div>
- <div class="field"><label>Purchasing Contact</label><input type="text" name="purchasing_contact" required></div>
- <div class="field"><label>Accounts Contact</label><input type="text" name="accounts_contact" required></div>
- <div class="field full"><label>Delivery Address <span style="text-transform:none;font-weight:400;letter-spacing:0;font-size:11px">(if different)</span></label><textarea name="delivery_address" placeholder="Leave blank if same as invoice address"></textarea></div>
- <div class="field full"><label>Delivery Restrictions <span style="text-transform:none;font-weight:400;letter-spacing:0;font-size:11px">(tail lift, pedestrianised, etc.)</span></label><input type="text" name="delivery_restrictions" placeholder="Any access or timing restrictions…"></div>
- </div>
- <div style="margin-top:24px">
- <label style="display:block;margin-bottom:10px">Estimated Turnover</label>
- <div class="option-grid">
- <div class="option-item"><input type="radio" name="turnover" value="500k_plus" id="t1" required><label for="t1">&gt; £500k</label></div>
- <div class="option-item"><input type="radio" name="turnover" value="50_100k" id="t2"><label for="t2">&gt;£50k &lt;£100k</label></div>
- <div class="option-item"><input type="radio" name="turnover" value="10_50k" id="t3"><label for="t3">&gt;£10k &lt;£50k</label></div>
- <div class="option-item"><input type="radio" name="turnover" value="under_10k" id="t4"><label for="t4">&lt; £10k</label></div>
- </div>
- </div>
- </div>
- 
- <!-- CREDIT + DATA PROTECTION -->
- <div class="form-section">
- <div class="section-title">Credit Required</div>
- <div class="field-grid">
- <div class="field"><label>Amount of Credit Required (£)</label><input type="number" name="credit_required" placeholder="e.g. 5000" min="0" required></div>
- </div>
- <div class="info-box">
- <strong>Data Protection Notice</strong>
- In accordance with the Data Protection Act 1998, we advise sole trader customers that business information provided on this form may be shared with our finance providers for the purpose of obtaining sales ledger finance. By signing this form, you consent to us obtaining information from the trade references supplied and from credit reference agencies in order to assess your application for credit.
- </div>
- </div>
- 
- 
- <!-- LEGAL TRADING STYLE -->
- <div class="form-section">
- <div class="section-title">Legal Trading Style</div>
- <div class="option-grid">
- <div class="option-item"><input type="radio" name="legal_style" value="limited" id="ls1" required><label for="ls1">Limited Company</label></div>
- <div class="option-item"><input type="radio" name="legal_style" value="sole_trader" id="ls2"><label for="ls2">Sole Trader</label></div>
- <div class="option-item"><input type="radio" name="legal_style" value="partnership" id="ls3"><label for="ls3">Partnership</label></div>
- </div>
- <div class="conditional-fields" id="ltd-fields">
- <div class="field"><label>LTD Company Registration Number</label><input type="text" name="ltd_reg_number" placeholder="e.g. 12345678"></div>
- </div>
- <div class="conditional-fields" id="sole-fields">
- <div class="field"><label>Sole Trader Name &amp; Home Address</label><textarea name="sole_trader_address" placeholder="Full name and home address…"></textarea></div>
- </div>
- </div>
- 
- <!-- OUTLET TYPE -->
- <div class="form-section">
- <div class="section-title">Outlet Type</div>
- <div class="option-grid">
- <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="garden_centre" id="o1"><label for="o1">Garden Centre</label></div>
- <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="wholesale" id="o2"><label for="o2">Wholesale</label></div>
- <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="highstreet" id="o3"><label for="o3">High Street</label></div>
- <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="diy" id="o4"><label for="o4">DIY</label></div>
- <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="discount" id="o5"><label for="o5">Discount</label></div>
- <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="mailorder" id="o6"><label for="o6">Mail Order / Internet</label></div>
- </div>
- </div>
- 
- <!-- BANK INFORMATION -->
- <div class="form-section">
- <div class="section-title">Bank Information</div>
- <div class="field-grid">
- <div class="field full"><label>Bank Name</label><input type="text" name="bank_name" placeholder="e.g. Barclays, HSBC, Lloyds…" required></div>
- <div class="field full"><label>Bank Address</label><textarea name="bank_address" placeholder="Branch address…" style="min-height:65px" required></textarea></div>
- <div class="field"><label>Post Code</label><input type="text" name="bank_postcode" required></div>
- <div class="field"><label>Sort Code</label><input type="text" name="sort_code" placeholder="00-00-00" required></div>
- <div class="field"><label>Account Number</label><input type="text" name="account_number" placeholder="8 digit number" required></div>
- </div>
- </div>
- <div class="two-col-refs">
- <div>
- <p class="ref-sub">Reference 1</p>
- <div style="display:flex;flex-direction:column;gap:14px">
- <div class="field"><label>Name</label><input type="text" name="ref1_name"></div>
- <div class="field"><label>Address</label><textarea name="ref1_address" style="min-height:65px"></textarea></div>
- <div class="field"><label>Post Code</label><input type="text" name="ref1_postcode"></div>
- <div class="field"><label>Telephone</label><input type="tel" name="ref1_tel"></div>
- <div class="field"><label>Fax</label><input type="tel" name="ref1_fax"></div>
- </div>
- </div>
- <div>
- <p class="ref-sub">Reference 2</p>
- <div style="display:flex;flex-direction:column;gap:14px">
- <div class="field"><label>Name</label><input type="text" name="ref2_name"></div>
- <div class="field"><label>Address</label><textarea name="ref2_address" style="min-height:65px"></textarea></div>
- <div class="field"><label>Post Code</label><input type="text" name="ref2_postcode"></div>
- <div class="field"><label>Telephone</label><input type="tel" name="ref2_tel"></div>
- <div class="field"><label>Fax</label><input type="tel" name="ref2_fax"></div>
- </div>
- </div>
- </div>
- </div>
- 
- <!-- DECLARATION -->
- <div class="form-section">
- <div class="section-title">Declaration</div>
- <p style="font-size:13.5px;line-height:1.65;color:var(--text-muted);margin-bottom:22px">
- <strong style="color:var(--navy);display:block;margin-bottom:4px">Declaration (to be signed by an authorised representative of the company)</strong>
- I/We confirm that the information provided above is true and accurate to the best of our knowledge.
- </p>
- <div class="field-grid">
- <div class="field full"><label>Signed</label><input type="text" name="signed" placeholder="Type full name as signature" required></div>
- <div class="field"><label>Name</label><input type="text" name="name" placeholder="Print full name" required></div>
- <div class="field"><label>Position / Title</label><input type="text" name="position" placeholder="e.g. Director, Manager" required></div>
- <div class="field"><label>Date</label><input type="date" name="date" required></div>
- </div>
- </div>
- 
- <!-- SUBMIT -->
- <div class="submit-area">
- <p class="submit-note">Fields marked <span>*</span> are required.</p>
- <button type="submit">
- Submit Application
- <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
- </button>
- </div>
- </div>
- </form>
- </div>
- 
- <script>
- const legalStyleInputs = document.querySelectorAll('input[name="legal_style"]');
- const ltdFields = document.getElementById('ltd-fields');
- const soleFields = document.getElementById('sole-fields');
- const ltdRegInput = document.querySelector('input[name="ltd_reg_number"]');
- const soleTraderInput = document.querySelector('textarea[name="sole_trader_address"]');
- const outletInputs = document.querySelectorAll('input[name="outlet[]"]');
- const form = document.querySelector('form');
- 
- function updateLegalStyleFields(value) {
- ltdFields.classList.remove('visible');
- soleFields.classList.remove('visible');
- ltdRegInput.required = value === 'limited';
- soleTraderInput.required = value === 'sole_trader';
- 
- if (value === 'limited') ltdFields.classList.add('visible');
- if (value === 'sole_trader') soleFields.classList.add('visible');
- }
- 
- legalStyleInputs.forEach(radio => {
- radio.addEventListener('change', function() {
- updateLegalStyleFields(this.value);
- });
- });
- 
- outletInputs.forEach(input => {
- input.addEventListener('change', () => {
- const hasSelection = Array.from(outletInputs).some(box => box.checked);
- outletInputs[0].setCustomValidity(hasSelection ? '' : 'Please select at least one outlet type.');
- });
- });
- 
- form.addEventListener('submit', () => {
- const hasSelection = Array.from(outletInputs).some(box => box.checked);
- outletInputs[0].setCustomValidity(hasSelection ? '' : 'Please select at least one outlet type.');
- });
- 
- const selectedLegalStyle = document.querySelector('input[name="legal_style"]:checked');
- updateLegalStyleFields(selectedLegalStyle ? selectedLegalStyle.value : '');
- </script>
- </body>
- </html>
+
+<div class="form-section">
+
+<div class="section-title">Client Information</div>
+
+<div class="field-grid">
+
+<div class="field full">
+<label>Company Name <span class="req">*</span></label>
+<input type="text" name="company_name" required>
+</div>
+
+<div class="field">
+<label>VAT Number</label>
+<input type="text" name="vat_number">
+</div>
+
+<div class="field">
+<label>Website</label>
+<input type="text" name="website">
+</div>
+
+<div class="field">
+<label>Year Company Established</label>
+<input type="text" name="year_established" required>
+</div>
+
+<div class="field">
+<label>Telephone</label>
+<input type="tel" name="telephone" required>
+</div>
+
+<div class="field">
+<label>Fax</label>
+<input type="tel" name="fax">
+</div>
+
+<div class="field full">
+<label>Email <span class="req">*</span></label>
+<input type="email" name="email" required>
+</div>
+
+<div class="field full">
+<label>Invoice Address</label>
+<textarea name="invoice_address" required></textarea>
+</div>
+
+<div class="field">
+<label>Post Code</label>
+<input type="text" name="postcode" required>
+</div>
+
+<div class="field">
+<label>Purchasing Contact</label>
+<input type="text" name="purchasing_contact" required>
+</div>
+
+<div class="field">
+<label>Accounts Contact</label>
+<input type="text" name="accounts_contact" required>
+</div>
+
+<div class="field full">
+<label>Delivery Address (if different)</label>
+<textarea name="delivery_address"></textarea>
+</div>
+
+<div class="field full">
+<label>Delivery Restrictions</label>
+<input type="text" name="delivery_restrictions">
+</div>
+
+</div>
+</div>
+
+<!-- CREDIT -->
+
+<div class="form-section">
+
+<div class="section-title">Credit Required</div>
+
+<div class="field-grid">
+
+<div class="field full">
+<label>Amount of Credit Required (£)</label>
+<input type="number" name="credit_required" required>
+</div>
+
+</div>
+
+</div>
+
+<!-- LEGAL STYLE -->
+
+<div class="form-section">
+
+<div class="section-title">Legal Trading Style</div>
+
+<div class="option-grid">
+
+<div class="option-item">
+<input type="radio" name="legal_style" value="limited" required>
+<label>Limited Company</label>
+</div>
+
+<div class="option-item">
+<input type="radio" name="legal_style" value="sole">
+<label>Sole Trader</label>
+</div>
+
+<div class="option-item">
+<input type="radio" name="legal_style" value="partnership">
+<label>Partnership</label>
+</div>
+
+</div>
+
+</div>
+
+<!-- BANK -->
+
+<div class="form-section">
+
+<div class="section-title">Bank Information</div>
+
+<div class="field-grid">
+
+<div class="field full">
+<label>Bank Name</label>
+<input type="text" name="bank_name" required>
+</div>
+
+<div class="field full">
+<label>Bank Address</label>
+<textarea name="bank_address" required></textarea>
+</div>
+
+<div class="field">
+<label>Sort Code</label>
+<input type="text" name="sort_code" required>
+</div>
+
+<div class="field">
+<label>Account Number</label>
+<input type="text" name="account_number" required>
+</div>
+
+</div>
+
+</div>
+
+<!-- DECLARATION -->
+
+<div class="form-section">
+
+<div class="section-title">Declaration</div>
+
+<div class="field-grid">
+
+<div class="field full">
+<label>Signed</label>
+<input type="text" name="signed" required>
+</div>
+
+<div class="field">
+<label>Name</label>
+<input type="text" name="name" required>
+</div>
+
+<div class="field">
+<label>Position</label>
+<input type="text" name="position" required>
+</div>
+
+<div class="field">
+<label>Date</label>
+<input type="date" name="date" required>
+</div>
+
+</div>
+
+</div>
+
+<div class="submit-area">
+<button type="submit">Submit Application</button>
+</div>
+
+</form>
+
+</div>
+
+</body>
+</html>
