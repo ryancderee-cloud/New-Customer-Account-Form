@@ -1,0 +1,175 @@
+334	    <!-- CLIENT INFORMATION -->
+   335	    <div class="form-section">
+   336	      <div class="section-title">Client Information</div>
+   337	      <div class="field-grid">
+   338	        <div class="field full"><label>Company Name <span class="req">*</span></label><input type="text" name="company_name" placeholder="Trading or registered company name" required></div>
+   339	        <div class="field"><label>VAT Number</label><input type="text" name="vat_number" placeholder="GB 000 0000 00" required></div>
+   340	        <div class="field"><label>Website</label><input type="text" name="website" placeholder="https://"></div>
+   341	        <div class="field"><label>Year Company Established</label><input type="text" name="year_established" placeholder="e.g. 2005" required></div>
+   342	        <div class="field"><label>Telephone Number</label><input type="tel" name="telephone" required></div>
+   343	        <div class="field"><label>Fax Number</label><input type="tel" name="fax"></div>
+   344	        <div class="field full"><label>Email Address <span class="req">*</span></label><input type="email" name="email" placeholder="accounts@example.co.uk" required></div>
+   345	        <div class="field full"><label>Invoice and Statement Address</label><textarea name="invoice_address" placeholder="Street, town, county…" required></textarea></div>
+   346	        <div class="field"><label>Post Code</label><input type="text" name="postcode" required></div>
+   347	        <div class="field"><label>Purchasing Contact</label><input type="text" name="purchasing_contact" required></div>
+   348	        <div class="field"><label>Accounts Contact</label><input type="text" name="accounts_contact" required></div>
+   349	        <div class="field full"><label>Delivery Address <span style="text-transform:none;font-weight:400;letter-spacing:0;font-size:11px">(if different)</span></label><textarea name="delivery_address" placeholder="Leave blank if same as invoice address"></textarea></div>
+   350	        <div class="field full"><label>Delivery Restrictions <span style="text-transform:none;font-weight:400;letter-spacing:0;font-size:11px">(tail lift, pedestrianised, etc.)</span></label><input type="text" name="delivery_restrictions" placeholder="Any access or timing restrictions…"></div>
+   351	      </div>
+   352	      <div style="margin-top:24px">
+   353	        <label style="display:block;margin-bottom:10px">Estimated Turnover</label>
+   354	        <div class="option-grid">
+   355	          <div class="option-item"><input type="radio" name="turnover" value="500k_plus" id="t1" required><label for="t1">&gt; £500k</label></div>
+   356	          <div class="option-item"><input type="radio" name="turnover" value="50_100k" id="t2"><label for="t2">&gt;£50k &lt;£100k</label></div>
+   357	          <div class="option-item"><input type="radio" name="turnover" value="10_50k" id="t3"><label for="t3">&gt;£10k &lt;£50k</label></div>
+   358	          <div class="option-item"><input type="radio" name="turnover" value="under_10k" id="t4"><label for="t4">&lt; £10k</label></div>
+   359	        </div>
+   360	      </div>
+   361	    </div>
+   362	
+   363	    <!-- CREDIT + DATA PROTECTION -->
+   364	    <div class="form-section">
+   365	      <div class="section-title">Credit Required</div>
+   366	      <div class="field-grid">
+   367	        <div class="field"><label>Amount of Credit Required (£)</label><input type="number" name="credit_required" placeholder="e.g. 5000" min="0" required></div>
+   368	      </div>
+   369	      <div class="info-box">
+   370	        <strong>Data Protection Notice</strong>
+   371	        In accordance with the Data Protection Act 1998, we advise sole trader customers that business information provided on this form may be shared with our finance providers for the purpose of obtaining sales ledger finance. By signing this form, you consent to us obtaining information from the trade references supplied and from credit reference agencies in order to assess your application for credit.
+   372	      </div>
+   373	    </div>
+   374	
+   375	
+   376	    <!-- LEGAL TRADING STYLE -->
+   377	    <div class="form-section">
+   378	      <div class="section-title">Legal Trading Style</div>
+   379	      <div class="option-grid">
+   380	        <div class="option-item"><input type="radio" name="legal_style" value="limited" id="ls1" required><label for="ls1">Limited Company</label></div>
+   381	        <div class="option-item"><input type="radio" name="legal_style" value="sole_trader" id="ls2"><label for="ls2">Sole Trader</label></div>
+   382	        <div class="option-item"><input type="radio" name="legal_style" value="partnership" id="ls3"><label for="ls3">Partnership</label></div>
+   383	      </div>
+   384	      <div class="conditional-fields" id="ltd-fields">
+   385	        <div class="field"><label>LTD Company Registration Number</label><input type="text" name="ltd_reg_number" placeholder="e.g. 12345678"></div>
+   386	      </div>
+   387	      <div class="conditional-fields" id="sole-fields">
+   388	        <div class="field"><label>Sole Trader Name &amp; Home Address</label><textarea name="sole_trader_address" placeholder="Full name and home address…"></textarea></div>
+   389	      </div>
+   390	    </div>
+   391	
+   392	    <!-- OUTLET TYPE -->
+   393	    <div class="form-section">
+   394	      <div class="section-title">Outlet Type</div>
+   395	      <div class="option-grid">
+   396	        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="garden_centre" id="o1"><label for="o1">Garden Centre</label></div>
+   397	        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="wholesale" id="o2"><label for="o2">Wholesale</label></div>
+   398	        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="highstreet" id="o3"><label for="o3">High Street</label></div>
+   399	        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="diy" id="o4"><label for="o4">DIY</label></div>
+   400	        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="discount" id="o5"><label for="o5">Discount</label></div>
+   401	        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="mailorder" id="o6"><label for="o6">Mail Order / Internet</label></div>
+   402	      </div>
+   403	    </div>
+   404	
+   405	    <!-- BANK INFORMATION -->
+   406	    <div class="form-section">
+   407	      <div class="section-title">Bank Information</div>
+   408	      <div class="field-grid">
+   409	        <div class="field full"><label>Bank Name</label><input type="text" name="bank_name" placeholder="e.g. Barclays, HSBC, Lloyds…" required></div>
+   410	        <div class="field full"><label>Bank Address</label><textarea name="bank_address" placeholder="Branch address…" style="min-height:65px" required></textarea></div>
+   411	        <div class="field"><label>Post Code</label><input type="text" name="bank_postcode" required></div>
+   412	        <div class="field"><label>Sort Code</label><input type="text" name="sort_code" placeholder="00-00-00" required></div>
+   413	        <div class="field"><label>Account Number</label><input type="text" name="account_number" placeholder="8 digit number" required></div>
+   414	      </div>
+   415	    </div>
+   420	      <div class="two-col-refs">
+   421	        <div>
+   422	          <p class="ref-sub">Reference 1</p>
+   423	          <div style="display:flex;flex-direction:column;gap:14px">
+   424	            <div class="field"><label>Name</label><input type="text" name="ref1_name"></div>
+   425	            <div class="field"><label>Address</label><textarea name="ref1_address" style="min-height:65px"></textarea></div>
+   426	            <div class="field"><label>Post Code</label><input type="text" name="ref1_postcode"></div>
+   427	            <div class="field"><label>Telephone</label><input type="tel" name="ref1_tel"></div>
+   428	            <div class="field"><label>Fax</label><input type="tel" name="ref1_fax"></div>
+   429	          </div>
+   430	        </div>
+   431	        <div>
+   432	          <p class="ref-sub">Reference 2</p>
+   433	          <div style="display:flex;flex-direction:column;gap:14px">
+   434	            <div class="field"><label>Name</label><input type="text" name="ref2_name"></div>
+   435	            <div class="field"><label>Address</label><textarea name="ref2_address" style="min-height:65px"></textarea></div>
+   436	            <div class="field"><label>Post Code</label><input type="text" name="ref2_postcode"></div>
+   437	            <div class="field"><label>Telephone</label><input type="tel" name="ref2_tel"></div>
+   438	            <div class="field"><label>Fax</label><input type="tel" name="ref2_fax"></div>
+   439	          </div>
+   440	        </div>
+   441	      </div>
+   442	    </div>
+   443	
+   444	    <!-- DECLARATION -->
+   445	    <div class="form-section">
+   446	      <div class="section-title">Declaration</div>
+   447	      <p style="font-size:13.5px;line-height:1.65;color:var(--text-muted);margin-bottom:22px">
+   448	        <strong style="color:var(--navy);display:block;margin-bottom:4px">Declaration (to be signed by an authorised representative of the company)</strong>
+   449	        I/We confirm that the information provided above is true and accurate to the best of our knowledge.
+   450	      </p>
+   451	      <div class="field-grid">
+   452	        <div class="field full"><label>Signed</label><input type="text" name="signed" placeholder="Type full name as signature" required></div>
+   453	        <div class="field"><label>Name</label><input type="text" name="name" placeholder="Print full name" required></div>
+   454	        <div class="field"><label>Position / Title</label><input type="text" name="position" placeholder="e.g. Director, Manager" required></div>
+   455	        <div class="field"><label>Date</label><input type="date" name="date" required></div>
+   456	      </div>
+   457	    </div>
+   458	
+   459	    <!-- SUBMIT -->
+   460	    <div class="submit-area">
+   461	      <p class="submit-note">Fields marked <span>*</span> are required.</p>
+   462	      <button type="submit">
+   463	        Submit Application
+   464	        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+   465	      </button>
+   466	    </div>
+   468	  </div>
+   469	  </form>
+   470	</div>
+   471	
+   472	<script>
+   473	  const legalStyleInputs = document.querySelectorAll('input[name="legal_style"]');
+   474	  const ltdFields = document.getElementById('ltd-fields');
+   475	  const soleFields = document.getElementById('sole-fields');
+   476	  const ltdRegInput = document.querySelector('input[name="ltd_reg_number"]');
+   477	  const soleTraderInput = document.querySelector('textarea[name="sole_trader_address"]');
+   478	  const outletInputs = document.querySelectorAll('input[name="outlet[]"]');
+   479	  const form = document.querySelector('form');
+   480	
+   481	  function updateLegalStyleFields(value) {
+   482	    ltdFields.classList.remove('visible');
+   483	    soleFields.classList.remove('visible');
+   484	    ltdRegInput.required = value === 'limited';
+   485	    soleTraderInput.required = value === 'sole_trader';
+   486	
+   487	    if (value === 'limited') ltdFields.classList.add('visible');
+   488	    if (value === 'sole_trader') soleFields.classList.add('visible');
+   489	  }
+   490	
+   491	  legalStyleInputs.forEach(radio => {
+   492	    radio.addEventListener('change', function() {
+   493	      updateLegalStyleFields(this.value);
+   494	    });
+   495	  });
+   496	
+   497	  outletInputs.forEach(input => {
+   498	    input.addEventListener('change', () => {
+   499	      const hasSelection = Array.from(outletInputs).some(box => box.checked);
+   500	      outletInputs[0].setCustomValidity(hasSelection ? '' : 'Please select at least one outlet type.');
+   501	    });
+   502	  });
+   503	
+   504	  form.addEventListener('submit', () => {
+   505	    const hasSelection = Array.from(outletInputs).some(box => box.checked);
+   506	    outletInputs[0].setCustomValidity(hasSelection ? '' : 'Please select at least one outlet type.');
+   507	  });
+   508	
+   509	  const selectedLegalStyle = document.querySelector('input[name="legal_style"]:checked');
+   510	  updateLegalStyleFields(selectedLegalStyle ? selectedLegalStyle.value : '');
+   511	</script>
+   512	</body>
+   513	</html>
