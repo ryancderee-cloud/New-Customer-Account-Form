@@ -1,175 +1,754 @@
-334	    <!-- CLIENT INFORMATION -->
-   335	    <div class="form-section">
-   336	      <div class="section-title">Client Information</div>
-   337	      <div class="field-grid">
-   338	        <div class="field full"><label>Company Name <span class="req">*</span></label><input type="text" name="company_name" placeholder="Trading or registered company name" required></div>
-   339	        <div class="field"><label>VAT Number</label><input type="text" name="vat_number" placeholder="GB 000 0000 00" required></div>
-   340	        <div class="field"><label>Website</label><input type="text" name="website" placeholder="https://"></div>
-   341	        <div class="field"><label>Year Company Established</label><input type="text" name="year_established" placeholder="e.g. 2005" required></div>
-   342	        <div class="field"><label>Telephone Number</label><input type="tel" name="telephone" required></div>
-   343	        <div class="field"><label>Fax Number</label><input type="tel" name="fax"></div>
-   344	        <div class="field full"><label>Email Address <span class="req">*</span></label><input type="email" name="email" placeholder="accounts@example.co.uk" required></div>
-   345	        <div class="field full"><label>Invoice and Statement Address</label><textarea name="invoice_address" placeholder="Street, town, county…" required></textarea></div>
-   346	        <div class="field"><label>Post Code</label><input type="text" name="postcode" required></div>
-   347	        <div class="field"><label>Purchasing Contact</label><input type="text" name="purchasing_contact" required></div>
-   348	        <div class="field"><label>Accounts Contact</label><input type="text" name="accounts_contact" required></div>
-   349	        <div class="field full"><label>Delivery Address <span style="text-transform:none;font-weight:400;letter-spacing:0;font-size:11px">(if different)</span></label><textarea name="delivery_address" placeholder="Leave blank if same as invoice address"></textarea></div>
-   350	        <div class="field full"><label>Delivery Restrictions <span style="text-transform:none;font-weight:400;letter-spacing:0;font-size:11px">(tail lift, pedestrianised, etc.)</span></label><input type="text" name="delivery_restrictions" placeholder="Any access or timing restrictions…"></div>
-   351	      </div>
-   352	      <div style="margin-top:24px">
-   353	        <label style="display:block;margin-bottom:10px">Estimated Turnover</label>
-   354	        <div class="option-grid">
-   355	          <div class="option-item"><input type="radio" name="turnover" value="500k_plus" id="t1" required><label for="t1">&gt; £500k</label></div>
-   356	          <div class="option-item"><input type="radio" name="turnover" value="50_100k" id="t2"><label for="t2">&gt;£50k &lt;£100k</label></div>
-   357	          <div class="option-item"><input type="radio" name="turnover" value="10_50k" id="t3"><label for="t3">&gt;£10k &lt;£50k</label></div>
-   358	          <div class="option-item"><input type="radio" name="turnover" value="under_10k" id="t4"><label for="t4">&lt; £10k</label></div>
-   359	        </div>
-   360	      </div>
-   361	    </div>
-   362	
-   363	    <!-- CREDIT + DATA PROTECTION -->
-   364	    <div class="form-section">
-   365	      <div class="section-title">Credit Required</div>
-   366	      <div class="field-grid">
-   367	        <div class="field"><label>Amount of Credit Required (£)</label><input type="number" name="credit_required" placeholder="e.g. 5000" min="0" required></div>
-   368	      </div>
-   369	      <div class="info-box">
-   370	        <strong>Data Protection Notice</strong>
-   371	        In accordance with the Data Protection Act 1998, we advise sole trader customers that business information provided on this form may be shared with our finance providers for the purpose of obtaining sales ledger finance. By signing this form, you consent to us obtaining information from the trade references supplied and from credit reference agencies in order to assess your application for credit.
-   372	      </div>
-   373	    </div>
-   374	
-   375	
-   376	    <!-- LEGAL TRADING STYLE -->
-   377	    <div class="form-section">
-   378	      <div class="section-title">Legal Trading Style</div>
-   379	      <div class="option-grid">
-   380	        <div class="option-item"><input type="radio" name="legal_style" value="limited" id="ls1" required><label for="ls1">Limited Company</label></div>
-   381	        <div class="option-item"><input type="radio" name="legal_style" value="sole_trader" id="ls2"><label for="ls2">Sole Trader</label></div>
-   382	        <div class="option-item"><input type="radio" name="legal_style" value="partnership" id="ls3"><label for="ls3">Partnership</label></div>
-   383	      </div>
-   384	      <div class="conditional-fields" id="ltd-fields">
-   385	        <div class="field"><label>LTD Company Registration Number</label><input type="text" name="ltd_reg_number" placeholder="e.g. 12345678"></div>
-   386	      </div>
-   387	      <div class="conditional-fields" id="sole-fields">
-   388	        <div class="field"><label>Sole Trader Name &amp; Home Address</label><textarea name="sole_trader_address" placeholder="Full name and home address…"></textarea></div>
-   389	      </div>
-   390	    </div>
-   391	
-   392	    <!-- OUTLET TYPE -->
-   393	    <div class="form-section">
-   394	      <div class="section-title">Outlet Type</div>
-   395	      <div class="option-grid">
-   396	        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="garden_centre" id="o1"><label for="o1">Garden Centre</label></div>
-   397	        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="wholesale" id="o2"><label for="o2">Wholesale</label></div>
-   398	        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="highstreet" id="o3"><label for="o3">High Street</label></div>
-   399	        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="diy" id="o4"><label for="o4">DIY</label></div>
-   400	        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="discount" id="o5"><label for="o5">Discount</label></div>
-   401	        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="mailorder" id="o6"><label for="o6">Mail Order / Internet</label></div>
-   402	      </div>
-   403	    </div>
-   404	
-   405	    <!-- BANK INFORMATION -->
-   406	    <div class="form-section">
-   407	      <div class="section-title">Bank Information</div>
-   408	      <div class="field-grid">
-   409	        <div class="field full"><label>Bank Name</label><input type="text" name="bank_name" placeholder="e.g. Barclays, HSBC, Lloyds…" required></div>
-   410	        <div class="field full"><label>Bank Address</label><textarea name="bank_address" placeholder="Branch address…" style="min-height:65px" required></textarea></div>
-   411	        <div class="field"><label>Post Code</label><input type="text" name="bank_postcode" required></div>
-   412	        <div class="field"><label>Sort Code</label><input type="text" name="sort_code" placeholder="00-00-00" required></div>
-   413	        <div class="field"><label>Account Number</label><input type="text" name="account_number" placeholder="8 digit number" required></div>
-   414	      </div>
-   415	    </div>
-   420	      <div class="two-col-refs">
-   421	        <div>
-   422	          <p class="ref-sub">Reference 1</p>
-   423	          <div style="display:flex;flex-direction:column;gap:14px">
-   424	            <div class="field"><label>Name</label><input type="text" name="ref1_name"></div>
-   425	            <div class="field"><label>Address</label><textarea name="ref1_address" style="min-height:65px"></textarea></div>
-   426	            <div class="field"><label>Post Code</label><input type="text" name="ref1_postcode"></div>
-   427	            <div class="field"><label>Telephone</label><input type="tel" name="ref1_tel"></div>
-   428	            <div class="field"><label>Fax</label><input type="tel" name="ref1_fax"></div>
-   429	          </div>
-   430	        </div>
-   431	        <div>
-   432	          <p class="ref-sub">Reference 2</p>
-   433	          <div style="display:flex;flex-direction:column;gap:14px">
-   434	            <div class="field"><label>Name</label><input type="text" name="ref2_name"></div>
-   435	            <div class="field"><label>Address</label><textarea name="ref2_address" style="min-height:65px"></textarea></div>
-   436	            <div class="field"><label>Post Code</label><input type="text" name="ref2_postcode"></div>
-   437	            <div class="field"><label>Telephone</label><input type="tel" name="ref2_tel"></div>
-   438	            <div class="field"><label>Fax</label><input type="tel" name="ref2_fax"></div>
-   439	          </div>
-   440	        </div>
-   441	      </div>
-   442	    </div>
-   443	
-   444	    <!-- DECLARATION -->
-   445	    <div class="form-section">
-   446	      <div class="section-title">Declaration</div>
-   447	      <p style="font-size:13.5px;line-height:1.65;color:var(--text-muted);margin-bottom:22px">
-   448	        <strong style="color:var(--navy);display:block;margin-bottom:4px">Declaration (to be signed by an authorised representative of the company)</strong>
-   449	        I/We confirm that the information provided above is true and accurate to the best of our knowledge.
-   450	      </p>
-   451	      <div class="field-grid">
-   452	        <div class="field full"><label>Signed</label><input type="text" name="signed" placeholder="Type full name as signature" required></div>
-   453	        <div class="field"><label>Name</label><input type="text" name="name" placeholder="Print full name" required></div>
-   454	        <div class="field"><label>Position / Title</label><input type="text" name="position" placeholder="e.g. Director, Manager" required></div>
-   455	        <div class="field"><label>Date</label><input type="date" name="date" required></div>
-   456	      </div>
-   457	    </div>
-   458	
-   459	    <!-- SUBMIT -->
-   460	    <div class="submit-area">
-   461	      <p class="submit-note">Fields marked <span>*</span> are required.</p>
-   462	      <button type="submit">
-   463	        Submit Application
-   464	        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-   465	      </button>
-   466	    </div>
-   468	  </div>
-   469	  </form>
-   470	</div>
-   471	
-   472	<script>
-   473	  const legalStyleInputs = document.querySelectorAll('input[name="legal_style"]');
-   474	  const ltdFields = document.getElementById('ltd-fields');
-   475	  const soleFields = document.getElementById('sole-fields');
-   476	  const ltdRegInput = document.querySelector('input[name="ltd_reg_number"]');
-   477	  const soleTraderInput = document.querySelector('textarea[name="sole_trader_address"]');
-   478	  const outletInputs = document.querySelectorAll('input[name="outlet[]"]');
-   479	  const form = document.querySelector('form');
-   480	
-   481	  function updateLegalStyleFields(value) {
-   482	    ltdFields.classList.remove('visible');
-   483	    soleFields.classList.remove('visible');
-   484	    ltdRegInput.required = value === 'limited';
-   485	    soleTraderInput.required = value === 'sole_trader';
-   486	
-   487	    if (value === 'limited') ltdFields.classList.add('visible');
-   488	    if (value === 'sole_trader') soleFields.classList.add('visible');
-   489	  }
-   490	
-   491	  legalStyleInputs.forEach(radio => {
-   492	    radio.addEventListener('change', function() {
-   493	      updateLegalStyleFields(this.value);
-   494	    });
-   495	  });
-   496	
-   497	  outletInputs.forEach(input => {
-   498	    input.addEventListener('change', () => {
-   499	      const hasSelection = Array.from(outletInputs).some(box => box.checked);
-   500	      outletInputs[0].setCustomValidity(hasSelection ? '' : 'Please select at least one outlet type.');
-   501	    });
-   502	  });
-   503	
-   504	  form.addEventListener('submit', () => {
-   505	    const hasSelection = Array.from(outletInputs).some(box => box.checked);
-   506	    outletInputs[0].setCustomValidity(hasSelection ? '' : 'Please select at least one outlet type.');
-   507	  });
-   508	
-   509	  const selectedLegalStyle = document.querySelector('input[name="legal_style"]:checked');
-   510	  updateLegalStyleFields(selectedLegalStyle ? selectedLegalStyle.value : '');
-   511	</script>
-   512	</body>
-   513	</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Customer Account Form – De Ree UK</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1A315A;
+    --navy-light: #243f72;
+    --navy-dark: #111f3a;
+    --orange: #E8622A;
+    --orange-light: #f07a46;
+    --orange-pale: #fff4ef;
+    --white: #ffffff;
+    --off-white: #F6F7F9;
+    --border: #cdd4e0;
+    --border-light: #e2e6ed;
+    --text-muted: #5c6d8a;
+    --input-bg: #fafbfd;
+    --shadow-lg: 0 8px 48px rgba(26,49,90,0.13);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--off-white);
+    font-family: 'Barlow', sans-serif;
+    color: var(--navy);
+    min-height: 100vh;
+    padding: 32px 16px 80px;
+  }
+
+  .page-wrapper { max-width: 820px; margin: 0 auto; }
+
+  /* HEADER */
+  .site-header {
+    background: var(--white);
+    border-radius: 16px 16px 0 0;
+    padding: 28px 40px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-bottom: 3px solid var(--orange);
+    animation: fadeDown 0.6s ease both;
+  }
+
+  .logo-img { width: 180px; max-width: 100%; height: auto; display: block; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 28px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+
+  .contact-item { display: flex; align-items: center; gap: 7px; white-space: nowrap; }
+  .contact-item a { color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+  .contact-item a:hover { color: var(--orange); }
+  .ci { width: 13px; height: 13px; flex-shrink: 0; stroke: var(--orange); fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* TITLE BAR */
+  .form-title-bar {
+    background: var(--navy);
+    padding: 26px 40px;
+    animation: fadeDown 0.6s ease 0.05s both;
+  }
+
+  .form-title-bar h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(26px, 5vw, 40px);
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1;
+  }
+
+
+  /* FORM CARD */
+  .form-card {
+    background: var(--white);
+    box-shadow: var(--shadow-lg);
+    border-radius: 0 0 16px 16px;
+    overflow: hidden;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+
+  /* SECTIONS */
+  .form-section { padding: 32px 40px; border-bottom: 1px solid var(--border-light); }
+  .form-section:last-of-type { border-bottom: none; }
+
+  @media (max-width: 580px) {
+    .site-header, .form-title-bar, .form-section, .submit-area { padding-left: 20px; padding-right: 20px; }
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--navy);
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+  }
+
+  /* GRID */
+  .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
+  .field-grid .full { grid-column: 1 / -1; }
+
+  @media (max-width: 540px) {
+    .field-grid { grid-template-columns: 1fr; }
+    .field-grid .full { grid-column: 1; }
+  }
+
+  .two-col-refs { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  @media (max-width: 600px) { .two-col-refs { grid-template-columns: 1fr; } }
+
+  /* FIELDS */
+  .field { display: flex; flex-direction: column; gap: 5px; }
+
+  label {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  label .req { color: var(--orange); margin-left: 2px; }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="date"],
+  input[type="tel"],
+  textarea {
+    width: 100%;
+    padding: 10px 13px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--input-bg);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    color: var(--navy);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  input::placeholder, textarea::placeholder { color: #b0baca; }
+
+  input:focus, textarea:focus {
+    border-color: var(--navy);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(26,49,90,0.08);
+  }
+
+  textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+
+  /* OPTION CARDS */
+  .option-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .option-item { position: relative; }
+  .option-item input { position: absolute; opacity: 0; width: 0; height: 0; }
+
+  .option-item label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    text-transform: none;
+    color: var(--navy);
+    background: var(--input-bg);
+    transition: all 0.15s;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .option-item label::before {
+    content: '';
+    width: 15px; height: 15px;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: var(--white);
+    transition: all 0.15s;
+  }
+
+  .option-item.checkbox label::before { border-radius: 4px; }
+
+  .option-item input:checked + label { border-color: var(--navy); background: rgba(26,49,90,0.05); }
+
+  .option-item input:checked + label::before {
+    background: var(--navy);
+    border-color: var(--navy);
+    box-shadow: inset 0 0 0 3px var(--white);
+  }
+
+  .option-item.checkbox input:checked + label::before {
+    box-shadow: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l3 3 5-6' stroke='white' stroke-width='1.7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10px;
+  }
+
+  .option-item label:hover { border-color: var(--navy-light); background: rgba(26,49,90,0.03); }
+
+  /* CONDITIONAL */
+  .conditional-fields {
+    display: none;
+    margin-top: 16px;
+    padding: 16px 18px;
+    background: rgba(26,49,90,0.03);
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+  }
+  .conditional-fields.visible { display: block; }
+
+  /* INFO BOX */
+  .info-box {
+    background: var(--orange-pale);
+    border: 1px solid rgba(232,98,42,0.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: #7a3010;
+    line-height: 1.65;
+    margin-top: 20px;
+  }
+  .info-box strong { display: block; color: var(--orange); font-weight: 600; margin-bottom: 5px; }
+
+  /* SUBMIT */
+  .submit-area {
+    background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .submit-note { color: rgba(255,255,255,0.5); font-size: 13px; max-width: 320px; line-height: 1.5; }
+  .submit-note span { color: var(--orange-light); }
+
+  button[type="submit"] {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 30px;
+    background: var(--orange);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(232,98,42,0.35);
+    white-space: nowrap;
+  }
+
+  button[type="submit"]:hover { background: var(--orange-light); transform: translateY(-1px); box-shadow: 0 6px 28px rgba(232,98,42,0.45); }
+  button[type="submit"] svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+
+  .ref-sub { font-size: 12px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 14px; text-transform: uppercase; }
+
+  .signature-wrap {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: var(--input-bg);
+    padding: 14px;
+  }
+
+  .signature-mode {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .signature-mode label {
+    text-transform: none;
+    letter-spacing: 0.2px;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .signature-canvas {
+    width: 100%;
+    height: 170px;
+    border: 1.5px dashed var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    touch-action: none;
+    cursor: crosshair;
+  }
+
+  .signature-actions {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .sig-hint { font-size: 12px; color: var(--text-muted); }
+
+  .clear-signature-btn {
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--navy);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .signature-typed-input { margin-top: 10px; }
+
+  .signature-typed-input.hidden,
+  .signature-pad-area.hidden { display: none; }
+
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- HEADER -->
+  <div class="site-header">
+    <img
+      class="logo-img"
+      src="https://www.dropbox.com/scl/fi/rp3bol8mcbb2wn0dxck62/logo-no-background.png?rlkey=jdwkdmcamkl4079uzrtpp1a7h&st=cz51wdwo&raw=1"
+      alt="De Ree UK logo"
+      referrerpolicy="no-referrer"
+    >
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <svg class="ci" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.08 4.18 2 2 0 0 1 5.06 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L9.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23 16.92z"/></svg>
+        <a href="tel:01204669445">01204 669 445</a>
+      </div>
+      <div class="contact-item">
+        <svg class="ci" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+        <a href="mailto:cs@deree-uk.com">cs@deree-uk.com</a>
+      </div>
+      <div class="contact-item">
+        <svg class="ci" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        <a href="tel:01204669439">01204 669 439 (fax)</a>
+      </div>
+      <div class="contact-item">
+        <svg class="ci" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <a href="https://www.deree-uk.com" target="_blank">www.deree-uk.com</a>
+      </div>
+      <div class="contact-item" style="grid-column:1/-1">
+        <svg class="ci" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <a href="https://www.linkedin.com/company/deree-uk" target="_blank">linkedin.com/company/deree-uk</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TITLE BAR -->
+  <div class="form-title-bar">
+    <h1>New Customer Account Form</h1>
+  </div>
+
+  <form action="submit-form.php" method="post">
+  <div class="form-card">
+
+    <!-- CLIENT INFORMATION -->
+    <div class="form-section">
+      <div class="section-title">Client Information</div>
+      <div class="field-grid">
+        <div class="field full"><label>Company Name <span class="req">*</span></label><input type="text" name="company_name" placeholder="Trading or registered company name" required></div>
+        <div class="field"><label>VAT Number <span class="req">*</span></label><input type="text" name="vat_number" placeholder="GB 000 0000 00" required></div>
+        <div class="field"><label>Website</label><input type="text" name="website" placeholder="https://"></div>
+        <div class="field"><label>Year Company Established <span class="req">*</span></label><input type="text" name="year_established" placeholder="e.g. 2005" required></div>
+        <div class="field"><label>Telephone Number <span class="req">*</span></label><input type="tel" name="telephone" required></div>
+        <div class="field"><label>Fax Number</label><input type="tel" name="fax"></div>
+        <div class="field full"><label>Email Address <span class="req">*</span></label><input type="email" name="email" placeholder="accounts@example.co.uk" required></div>
+        <div class="field full"><label>Invoice and Statement Address <span class="req">*</span></label><textarea name="invoice_address" placeholder="Street, town, county…" required></textarea></div>
+        <div class="field"><label>Post Code <span class="req">*</span></label><input type="text" name="postcode" required></div>
+        <div class="field"><label>Purchasing Contact <span class="req">*</span></label><input type="text" name="purchasing_contact" required></div>
+        <div class="field"><label>Accounts Contact <span class="req">*</span></label><input type="text" name="accounts_contact" required></div>
+        <div class="field full"><label>Delivery Address <span style="text-transform:none;font-weight:400;letter-spacing:0;font-size:11px">(if different)</span></label><textarea name="delivery_address" placeholder="Leave blank if same as invoice address"></textarea></div>
+        <div class="field full"><label>Delivery Restrictions <span style="text-transform:none;font-weight:400;letter-spacing:0;font-size:11px">(tail lift, pedestrianised, etc.)</span></label><input type="text" name="delivery_restrictions" placeholder="Any access or timing restrictions…"></div>
+      </div>
+      <div style="margin-top:24px">
+        <label style="display:block;margin-bottom:10px">Estimated Turnover <span class="req">*</span></label>
+        <div class="option-grid">
+          <div class="option-item"><input type="radio" name="turnover" value="500k_plus" id="t1" required><label for="t1">&gt; £500k</label></div>
+          <div class="option-item"><input type="radio" name="turnover" value="50_100k" id="t2" required><label for="t2">&gt;£50k &lt;£100k</label></div>
+          <div class="option-item"><input type="radio" name="turnover" value="10_50k" id="t3" required><label for="t3">&gt;£10k &lt;£50k</label></div>
+          <div class="option-item"><input type="radio" name="turnover" value="under_10k" id="t4" required><label for="t4">&lt; £10k</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAID BY CARD -->
+    <div class="form-section">
+      <div class="option-item checkbox" style="display:inline-block">
+        <input type="checkbox" id="paid-by-card" name="paid_by_card">
+        <label for="paid-by-card">Paid by card (credit account not required)</label>
+      </div>
+    </div>
+
+    <!-- CREDIT + DATA PROTECTION -->
+    <div class="form-section">
+      <div class="section-title">Credit Required</div>
+      <div class="field-grid">
+        <div class="field"><label>Amount of Credit Required (£) <span class="req credit-dependent">*</span></label><input type="number" name="credit_required" placeholder="e.g. 5000" min="0" required></div>
+      </div>
+      <div class="info-box">
+        <strong>Data Protection Notice</strong>
+        In accordance with the Data Protection Act 1998, we advise sole trader customers that business information provided on this form may be shared with our finance providers for the purpose of obtaining sales ledger finance. By signing this form, you consent to us obtaining information from the trade references supplied and from credit reference agencies in order to assess your application for credit.
+      </div>
+    </div>
+
+
+    <!-- LEGAL TRADING STYLE -->
+    <div class="form-section">
+      <div class="section-title">Legal Trading Style</div>
+      <div class="option-grid">
+        <div class="option-item"><input type="radio" name="legal_style" value="limited" id="ls1" required><label for="ls1">Limited Company</label></div>
+        <div class="option-item"><input type="radio" name="legal_style" value="sole_trader" id="ls2" required><label for="ls2">Sole Trader</label></div>
+        <div class="option-item"><input type="radio" name="legal_style" value="partnership" id="ls3" required><label for="ls3">Partnership</label></div>
+      </div>
+      <div class="conditional-fields" id="ltd-fields">
+        <div class="field"><label>LTD Company Registration Number <span class="req">*</span></label><input type="text" name="ltd_reg_number" placeholder="e.g. 12345678"></div>
+      </div>
+      <div class="conditional-fields" id="sole-fields">
+        <div class="field"><label>Sole Trader Name &amp; Home Address <span class="req">*</span></label><textarea name="sole_trader_address" placeholder="Full name and home address…"></textarea></div>
+      </div>
+    </div>
+
+    <!-- OUTLET TYPE -->
+    <div class="form-section">
+      <div class="section-title">Outlet Type</div>
+      <div class="option-grid">
+        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="garden_centre" id="o1"><label for="o1">Garden Centre</label></div>
+        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="wholesale" id="o2"><label for="o2">Wholesale</label></div>
+        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="highstreet" id="o3"><label for="o3">High Street</label></div>
+        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="diy" id="o4"><label for="o4">DIY</label></div>
+        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="discount" id="o5"><label for="o5">Discount</label></div>
+        <div class="option-item checkbox"><input type="checkbox" name="outlet[]" value="mailorder" id="o6"><label for="o6">Mail Order / Internet</label></div>
+      </div>
+    </div>
+
+    <!-- BANK INFORMATION -->
+    <div class="form-section">
+      <div class="section-title">Bank Information</div>
+      <div class="field-grid">
+        <div class="field full"><label>Bank Name <span class="req credit-dependent">*</span></label><input type="text" name="bank_name" placeholder="e.g. Barclays, HSBC, Lloyds…" required></div>
+        <div class="field full"><label>Bank Address <span class="req credit-dependent">*</span></label><textarea name="bank_address" placeholder="Branch address…" style="min-height:65px" required></textarea></div>
+        <div class="field"><label>Post Code <span class="req credit-dependent">*</span></label><input type="text" name="bank_postcode" required></div>
+        <div class="field"><label>Sort Code <span class="req credit-dependent">*</span></label><input type="text" name="sort_code" placeholder="00-00-00" required></div>
+        <div class="field"><label>Account Number <span class="req credit-dependent">*</span></label><input type="text" name="account_number" placeholder="8 digit number" required></div>
+      </div>
+    </div>
+
+    <!-- TRADE REFERENCES -->
+    <div class="form-section">
+      <div class="section-title">Trade References</div>
+      <div class="two-col-refs">
+        <div>
+          <p class="ref-sub">Reference 1</p>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div class="field"><label>Name <span class="req credit-dependent">*</span></label><input type="text" name="ref1_name" required></div>
+            <div class="field"><label>Address <span class="req credit-dependent">*</span></label><textarea name="ref1_address" style="min-height:65px" required></textarea></div>
+            <div class="field"><label>Post Code <span class="req credit-dependent">*</span></label><input type="text" name="ref1_postcode" required></div>
+            <div class="field"><label>Telephone <span class="req credit-dependent">*</span></label><input type="tel" name="ref1_tel" required></div>
+            <div class="field"><label>Fax <span class="req credit-dependent">*</span></label><input type="tel" name="ref1_fax" required></div>
+          </div>
+        </div>
+        <div>
+          <p class="ref-sub">Reference 2</p>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div class="field"><label>Name <span class="req credit-dependent">*</span></label><input type="text" name="ref2_name" required></div>
+            <div class="field"><label>Address <span class="req credit-dependent">*</span></label><textarea name="ref2_address" style="min-height:65px" required></textarea></div>
+            <div class="field"><label>Post Code <span class="req credit-dependent">*</span></label><input type="text" name="ref2_postcode" required></div>
+            <div class="field"><label>Telephone <span class="req credit-dependent">*</span></label><input type="tel" name="ref2_tel" required></div>
+            <div class="field"><label>Fax <span class="req credit-dependent">*</span></label><input type="tel" name="ref2_fax" required></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DECLARATION -->
+    <div class="form-section">
+      <div class="section-title">Declaration</div>
+      <p style="font-size:13.5px;line-height:1.65;color:var(--text-muted);margin-bottom:22px">
+        <strong style="color:var(--navy);display:block;margin-bottom:4px">Declaration (to be signed by an authorised representative of the company)</strong>
+        I/We confirm that the information provided above is true and accurate to the best of our knowledge.
+      </p>
+      <div class="field-grid">
+        <div class="field full">
+          <label>Signed <span class="req">*</span></label>
+          <div class="signature-wrap">
+            <div class="signature-mode">
+              <label><input type="radio" name="signature_mode" value="draw" checked> Draw signature</label>
+              <label><input type="radio" name="signature_mode" value="type"> Type name instead</label>
+            </div>
+
+            <div class="signature-pad-area" id="signature-pad-area">
+              <canvas id="signature-canvas" class="signature-canvas" aria-label="Signature pad"></canvas>
+              <div class="signature-actions">
+                <span class="sig-hint">Sign above using mouse or touch.</span>
+                <button type="button" id="clear-signature" class="clear-signature-btn">Clear signature</button>
+              </div>
+            </div>
+
+            <div class="signature-typed-input hidden" id="signature-typed-input">
+              <input type="text" id="typed-signature-name" placeholder="Type full name as electronic signature">
+            </div>
+
+            <input type="hidden" name="signed" id="signed-value" required>
+          </div>
+        </div>
+        <div class="field"><label>Name <span class="req">*</span></label><input type="text" name="name" placeholder="Print full name" required></div>
+        <div class="field"><label>Position / Title <span class="req">*</span></label><input type="text" name="position" placeholder="e.g. Director, Manager" required></div>
+        <div class="field"><label>Date <span class="req">*</span></label><input type="date" name="date" required></div>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-area">
+      <p class="submit-note">Fields marked <span>*</span> are required.</p>
+      <button type="submit">
+        Submit Application
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+
+  </div>
+  </form>
+</div>
+
+<script>
+  const legalStyleInputs = document.querySelectorAll('input[name="legal_style"]');
+  const ltdFields = document.getElementById('ltd-fields');
+  const soleFields = document.getElementById('sole-fields');
+  const ltdRegInput = document.querySelector('input[name="ltd_reg_number"]');
+  const soleTraderInput = document.querySelector('textarea[name="sole_trader_address"]');
+  const outletInputs = document.querySelectorAll('input[name="outlet[]"]');
+  const form = document.querySelector('form');
+
+  const paidByCardInput = document.getElementById('paid-by-card');
+  const creditRequiredInput = document.querySelector('input[name="credit_required"]');
+  const bankAndTradeFields = document.querySelectorAll(
+    'input[name="bank_name"], textarea[name="bank_address"], input[name="bank_postcode"], input[name="sort_code"], input[name="account_number"], input[name^="ref1_"], input[name^="ref2_"], textarea[name^="ref1_"], textarea[name^="ref2_"]'
+  );
+  const creditDependentRequiredMarkers = document.querySelectorAll('.credit-dependent');
+  const signatureCanvas = document.getElementById('signature-canvas');
+  const signaturePadArea = document.getElementById('signature-pad-area');
+  const typedSignatureArea = document.getElementById('signature-typed-input');
+  const typedSignatureNameInput = document.getElementById('typed-signature-name');
+  const clearSignatureButton = document.getElementById('clear-signature');
+  const signatureModeInputs = document.querySelectorAll('input[name="signature_mode"]');
+  const signedValueInput = document.getElementById('signed-value');
+
+  const signatureContext = signatureCanvas.getContext('2d');
+  let signatureHasInk = false;
+  let isDrawing = false;
+
+  function resizeSignatureCanvas() {
+    const ratio = window.devicePixelRatio || 1;
+    const rect = signatureCanvas.getBoundingClientRect();
+    signatureCanvas.width = Math.floor(rect.width * ratio);
+    signatureCanvas.height = Math.floor(rect.height * ratio);
+    signatureContext.setTransform(1, 0, 0, 1, 0, 0);
+    signatureContext.scale(ratio, ratio);
+    signatureContext.lineWidth = 2;
+    signatureContext.lineCap = 'round';
+    signatureContext.lineJoin = 'round';
+    signatureContext.strokeStyle = '#1A315A';
+    signatureContext.clearRect(0, 0, rect.width, rect.height);
+    signatureHasInk = false;
+  }
+
+  function getSignatureMode() {
+    return document.querySelector('input[name="signature_mode"]:checked')?.value || 'draw';
+  }
+
+  function getCanvasPoint(event) {
+    const rect = signatureCanvas.getBoundingClientRect();
+    return {
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top,
+    };
+  }
+
+  function startDrawing(event) {
+    isDrawing = true;
+    const point = getCanvasPoint(event);
+    signatureContext.beginPath();
+    signatureContext.moveTo(point.x, point.y);
+  }
+
+  function draw(event) {
+    if (!isDrawing) return;
+    const point = getCanvasPoint(event);
+    signatureContext.lineTo(point.x, point.y);
+    signatureContext.stroke();
+    signatureHasInk = true;
+  }
+
+  function stopDrawing() {
+    if (!isDrawing) return;
+    isDrawing = false;
+    signatureContext.closePath();
+  }
+
+  function clearSignature() {
+    signatureContext.clearRect(0, 0, signatureCanvas.width, signatureCanvas.height);
+    signatureHasInk = false;
+    signedValueInput.value = '';
+  }
+
+  function updateSignatureModeUI() {
+    const mode = getSignatureMode();
+    signaturePadArea.classList.toggle('hidden', mode !== 'draw');
+    typedSignatureArea.classList.toggle('hidden', mode !== 'type');
+
+    if (mode === 'type') {
+      typedSignatureNameInput.setAttribute('required', 'required');
+    } else {
+      typedSignatureNameInput.removeAttribute('required');
+    }
+  }
+
+  function syncSignatureValueForSubmit() {
+    const mode = getSignatureMode();
+
+    if (mode === 'type') {
+      const typedName = typedSignatureNameInput.value.trim();
+      if (!typedName) {
+        typedSignatureNameInput.setCustomValidity('Please type your name as an electronic signature.');
+        signedValueInput.value = '';
+        return false;
+      }
+      typedSignatureNameInput.setCustomValidity('');
+      signedValueInput.value = `typed:${typedName}`;
+      return true;
+    }
+
+    if (!signatureHasInk) {
+      signedValueInput.value = '';
+      return false;
+    }
+
+    signedValueInput.value = signatureCanvas.toDataURL('image/png');
+    return true;
+  }
+
+  function updateCreditAccountRequirements() {
+    const creditAccountRequired = !paidByCardInput.checked;
+    creditRequiredInput.required = creditAccountRequired;
+
+    bankAndTradeFields.forEach(field => {
+      field.required = creditAccountRequired;
+    });
+
+    creditDependentRequiredMarkers.forEach(marker => {
+      marker.style.display = creditAccountRequired ? '' : 'none';
+    });
+  }
+
+  function updateLegalStyleFields(value) {
+    ltdFields.classList.remove('visible');
+    soleFields.classList.remove('visible');
+    ltdRegInput.required = value === 'limited';
+    soleTraderInput.required = value === 'sole_trader';
+
+    if (value === 'limited') ltdFields.classList.add('visible');
+    if (value === 'sole_trader') soleFields.classList.add('visible');
+  }
+
+  legalStyleInputs.forEach(radio => {
+    radio.addEventListener('change', function() {
+      updateLegalStyleFields(this.value);
+    });
+  });
+
+  outletInputs.forEach(input => {
+    input.addEventListener('change', () => {
+      const hasSelection = Array.from(outletInputs).some(box => box.checked);
+      outletInputs[0].setCustomValidity(hasSelection ? '' : 'Please select at least one outlet type.');
+    });
+  });
+
+  form.addEventListener('submit', () => {
+    const hasSelection = Array.from(outletInputs).some(box => box.checked);
+    outletInputs[0].setCustomValidity(hasSelection ? '' : 'Please select at least one outlet type.');
+
+    const signatureValid = syncSignatureValueForSubmit();
+    signedValueInput.setCustomValidity(signatureValid ? '' : 'Please provide your signature by drawing or typing your name.');
+  });
+
+
+  paidByCardInput.addEventListener('change', updateCreditAccountRequirements);
+  updateCreditAccountRequirements();
+
+  signatureCanvas.addEventListener('pointerdown', startDrawing);
+  signatureCanvas.addEventListener('pointermove', draw);
+  signatureCanvas.addEventListener('pointerup', stopDrawing);
+  signatureCanvas.addEventListener('pointerleave', stopDrawing);
+  signatureCanvas.addEventListener('pointercancel', stopDrawing);
+
+  clearSignatureButton.addEventListener('click', clearSignature);
+
+  signatureModeInputs.forEach(input => {
+    input.addEventListener('change', () => {
+      updateSignatureModeUI();
+      signedValueInput.setCustomValidity('');
+      typedSignatureNameInput.setCustomValidity('');
+    });
+  });
+
+  typedSignatureNameInput.addEventListener('input', () => {
+    typedSignatureNameInput.setCustomValidity('');
+  });
+
+  window.addEventListener('resize', resizeSignatureCanvas);
+  resizeSignatureCanvas();
+  updateSignatureModeUI();
+
+  const selectedLegalStyle = document.querySelector('input[name="legal_style"]:checked');
+  updateLegalStyleFields(selectedLegalStyle ? selectedLegalStyle.value : '');
+</script>
+</body>
+</html>
