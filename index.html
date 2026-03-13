@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+</style>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+</head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>New Customer Account Form – De Ree UK</title>
@@ -588,249 +592,44 @@
         <div class="field"><label>Date <span class="req">*</span></label><input type="date" name="date" required></div>
       </div>
     </div>
-    <!-- SUBMIT -->
-    <div class="submit-area">
+<!-- SUBMIT -->
+<!-- SUBMIT -->
+<div class="submit-area">
+
 <div style="max-width:520px; color:rgba(255,255,255,0.85); font-size:13px; line-height:1.6;">
-  <label style="display:flex; gap:10px; align-items:flex-start; text-transform:none; letter-spacing:0;">
-    <input type="checkbox" name="consent" required style="margin-top:4px;">
-    <span>
-      I confirm that the information provided in this application is true and accurate and that I am authorised to submit this application on behalf of the business. 
-      I consent to De Ree UK processing the information provided for the purposes of assessing this application for a trade account. 
-      Information may be shared with credit reference agencies or finance providers where necessary. 
-      All personal data will be processed in accordance with applicable UK data protection legislation.
-    </span>
-  </label>
-</div>
-      <div>
-        <p class="submit-note">Fields marked <span>*</span> are required.</p>
-        <p class="submit-note" style="margin-top:10px;color:rgba(255,255,255,0.75)">
-          De Ree UK<br>
-          The Haweswater Suite, Paragon House, Paragon Business Park<br>
-          Chorley New Road, Bolton, BL6 6HG, England<br><br>
-          VAT Number: GB 864 8482 77<br>
-          Registered in England: 05357534
-        </p>
-      </div>
-      <button type="submit">
-        Submit Application
-        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </button>
-    </div>
-
-  </div>
-  </form>
+<label style="display:flex; gap:10px; align-items:flex-start; text-transform:none; letter-spacing:0;">
+<input type="checkbox" name="consent" required style="margin-top:4px;">
+<span>
+I confirm that the information provided in this application is true and accurate and that I am authorised to submit this application on behalf of the business.
+I consent to De Ree UK processing the information provided for the purposes of assessing this application for a trade account.
+Information may be shared with credit reference agencies or finance providers where necessary.
+All personal data will be processed in accordance with applicable UK data protection legislation.
+</span>
+</label>
 </div>
 
-<script>
-  const legalStyleInputs = document.querySelectorAll('input[name="legal_style"]');
-  const ltdFields = document.getElementById('ltd-fields');
-  const soleFields = document.getElementById('sole-fields');
-  const ltdRegInput = document.querySelector('input[name="ltd_reg_number"]');
-  const soleTraderInput = document.querySelector('textarea[name="sole_trader_address"]');
-  const outletInputs = document.querySelectorAll('input[name="outlet[]"]');
-  const form = document.querySelector('form');
+<div>
+<p class="submit-note">Fields marked <span>*</span> are required.</p>
+<p class="submit-note" style="margin-top:10px;color:rgba(255,255,255,0.75)">
+De Ree UK<br>
+The Haweswater Suite, Paragon House, Paragon Business Park<br>
+Chorley New Road, Bolton, BL6 6HG, England<br><br>
+VAT Number: GB 864 8482 77<br>
+Registered in England: 05357534
+</p>
+</div>
 
-  const formProgressBar = document.getElementById('form-progress-bar');
-  const formProgressText = document.getElementById('form-progress-text');
-  const formCard = document.querySelector('.form-card');
+<!-- TURNSTILE -->
+<div style="margin-top:18px;">
+<div class="cf-turnstile" data-sitekey="0x4AAAAAACqNClAJr4RNyx7Y"></div>
+</div>
 
-  const paidByCardInput = document.getElementById('paid-by-card');
-  const creditRequiredInput = document.querySelector('input[name="credit_required"]');
-  const bankAndTradeFields = document.querySelectorAll(
-    'input[name="bank_name"], textarea[name="bank_address"], input[name="bank_postcode"], input[name="sort_code"], input[name="account_number"], input[name^="ref1_"], textarea[name^="ref1_"]'
-  );
-  const creditDependentRequiredMarkers = document.querySelectorAll('.credit-dependent');
-  const signatureCanvas = document.getElementById('signature-canvas');
-  const signaturePadArea = document.getElementById('signature-pad-area');
-  const typedSignatureArea = document.getElementById('signature-typed-input');
-  const typedSignatureNameInput = document.getElementById('typed-signature-name');
-  const clearSignatureButton = document.getElementById('clear-signature');
-  const signatureModeInputs = document.querySelectorAll('input[name="signature_mode"]');
-  const signedValueInput = document.getElementById('signed-value');
+<button type="submit">
+Submit Application
+<svg viewBox="0 0 24 24">
+<line x1="5" y1="12" x2="19" y2="12"/>
+<polyline points="12 5 19 12 12 19"/>
+</svg>
+</button>
 
-  const signatureContext = signatureCanvas.getContext('2d');
-  let signatureHasInk = false;
-  let isDrawing = false;
-
-  function resizeSignatureCanvas() {
-    const ratio = window.devicePixelRatio || 1;
-    const rect = signatureCanvas.getBoundingClientRect();
-    signatureCanvas.width = Math.floor(rect.width * ratio);
-    signatureCanvas.height = Math.floor(rect.height * ratio);
-    signatureContext.setTransform(1, 0, 0, 1, 0, 0);
-    signatureContext.scale(ratio, ratio);
-    signatureContext.lineWidth = 2;
-    signatureContext.lineCap = 'round';
-    signatureContext.lineJoin = 'round';
-    signatureContext.strokeStyle = '#1A315A';
-    signatureContext.clearRect(0, 0, rect.width, rect.height);
-    signatureHasInk = false;
-  }
-
-  function getSignatureMode() {
-    return document.querySelector('input[name="signature_mode"]:checked')?.value || 'draw';
-  }
-
-  function getCanvasPoint(event) {
-    const rect = signatureCanvas.getBoundingClientRect();
-    return {
-      x: event.clientX - rect.left,
-      y: event.clientY - rect.top,
-    };
-  }
-
-  function startDrawing(event) {
-    isDrawing = true;
-    const point = getCanvasPoint(event);
-    signatureContext.beginPath();
-    signatureContext.moveTo(point.x, point.y);
-  }
-
-  function draw(event) {
-    if (!isDrawing) return;
-    const point = getCanvasPoint(event);
-    signatureContext.lineTo(point.x, point.y);
-    signatureContext.stroke();
-    signatureHasInk = true;
-  }
-
-  function stopDrawing() {
-    if (!isDrawing) return;
-    isDrawing = false;
-    signatureContext.closePath();
-  }
-
-  function clearSignature() {
-    signatureContext.clearRect(0, 0, signatureCanvas.width, signatureCanvas.height);
-    signatureHasInk = false;
-    signedValueInput.value = '';
-  }
-
-  function updateSignatureModeUI() {
-    const mode = getSignatureMode();
-    signaturePadArea.classList.toggle('hidden', mode !== 'draw');
-    typedSignatureArea.classList.toggle('hidden', mode !== 'type');
-
-    if (mode === 'type') {
-      typedSignatureNameInput.setAttribute('required', 'required');
-    } else {
-      typedSignatureNameInput.removeAttribute('required');
-    }
-  }
-
-  function syncSignatureValueForSubmit() {
-    const mode = getSignatureMode();
-
-    if (mode === 'type') {
-      const typedName = typedSignatureNameInput.value.trim();
-      if (!typedName) {
-        typedSignatureNameInput.setCustomValidity('Please type your name as an electronic signature.');
-        signedValueInput.value = '';
-        return false;
-      }
-      typedSignatureNameInput.setCustomValidity('');
-      signedValueInput.value = `typed:${typedName}`;
-      return true;
-    }
-
-    if (!signatureHasInk) {
-      signedValueInput.value = '';
-      return false;
-    }
-
-    signedValueInput.value = signatureCanvas.toDataURL('image/png');
-    return true;
-  }
-
-  function updateCreditAccountRequirements() {
-    const creditAccountRequired = !paidByCardInput.checked;
-    creditRequiredInput.required = creditAccountRequired;
-
-    bankAndTradeFields.forEach(field => {
-      field.required = creditAccountRequired;
-    });
-
-    creditDependentRequiredMarkers.forEach(marker => {
-      marker.style.display = creditAccountRequired ? '' : 'none';
-    });
-  }
-
-  function updateLegalStyleFields(value) {
-    ltdFields.classList.remove('visible');
-    soleFields.classList.remove('visible');
-    ltdRegInput.required = value === 'limited';
-    soleTraderInput.required = value === 'sole_trader';
-
-    if (value === 'limited') ltdFields.classList.add('visible');
-    if (value === 'sole_trader') soleFields.classList.add('visible');
-  }
-
-  legalStyleInputs.forEach(radio => {
-    radio.addEventListener('change', function() {
-      updateLegalStyleFields(this.value);
-    });
-  });
-
-  outletInputs.forEach(input => {
-    input.addEventListener('change', () => {
-      const hasSelection = Array.from(outletInputs).some(box => box.checked);
-      outletInputs[0].setCustomValidity(hasSelection ? '' : 'Please select at least one outlet type.');
-    });
-  });
-
-  form.addEventListener('submit', () => {
-    const hasSelection = Array.from(outletInputs).some(box => box.checked);
-    outletInputs[0].setCustomValidity(hasSelection ? '' : 'Please select at least one outlet type.');
-
-    const signatureValid = syncSignatureValueForSubmit();
-    signedValueInput.setCustomValidity(signatureValid ? '' : 'Please provide your signature by drawing or typing your name.');
-  });
-
-
-  paidByCardInput.addEventListener('change', updateCreditAccountRequirements);
-  updateCreditAccountRequirements();
-
-  signatureCanvas.addEventListener('pointerdown', startDrawing);
-  signatureCanvas.addEventListener('pointermove', draw);
-  signatureCanvas.addEventListener('pointerup', stopDrawing);
-  signatureCanvas.addEventListener('pointerleave', stopDrawing);
-  signatureCanvas.addEventListener('pointercancel', stopDrawing);
-
-  clearSignatureButton.addEventListener('click', clearSignature);
-
-  signatureModeInputs.forEach(input => {
-    input.addEventListener('change', () => {
-      updateSignatureModeUI();
-      signedValueInput.setCustomValidity('');
-      typedSignatureNameInput.setCustomValidity('');
-    });
-  });
-
-  typedSignatureNameInput.addEventListener('input', () => {
-    typedSignatureNameInput.setCustomValidity('');
-  });
-
-  window.addEventListener('resize', resizeSignatureCanvas);
-  resizeSignatureCanvas();
-  updateSignatureModeUI();
-
-  function updateFormProgress() {
-    const rect = formCard.getBoundingClientRect();
-    const totalScrollable = rect.height + window.innerHeight;
-    const progressed = window.innerHeight - rect.top;
-    const percent = Math.max(0, Math.min(100, (progressed / totalScrollable) * 100));
-    const roundedPercent = Math.round(percent);
-
-    formProgressBar.style.width = `${roundedPercent}%`;
-    formProgressText.textContent = `Form progress: ${roundedPercent}%`;
-  }
-
-  window.addEventListener('scroll', updateFormProgress, { passive: true });
-  window.addEventListener('resize', updateFormProgress);
-  updateFormProgress();
-
-  const selectedLegalStyle = document.querySelector('input[name="legal_style"]:checked');
-  updateLegalStyleFields(selectedLegalStyle ? selectedLegalStyle.value : '');
-</script>
-</body>
-</html>
+</div>
