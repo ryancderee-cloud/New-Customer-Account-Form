@@ -660,22 +660,36 @@ legalRadios.forEach(radio => {
 });
 
 
-/* Paid by card logic */
+/* =========================
+   PAID BY CARD LOGIC
+========================= */
 
 const paidByCard = document.getElementById("paid-by-card");
 
 paidByCard.addEventListener("change", () => {
 
-  const creditFields = document.querySelectorAll(".credit-dependent");
+  const creditSection = document.querySelectorAll(
+    'input[name="credit_required"], \
+     input[name="bank_name"], \
+     textarea[name="bank_address"], \
+     input[name="bank_postcode"], \
+     input[name="sort_code"], \
+     input[name="account_number"], \
+     input[name="ref1_name"], \
+     textarea[name="ref1_address"], \
+     input[name="ref1_postcode"], \
+     input[name="ref1_tel"], \
+     input[name="ref1_fax"]'
+  );
 
-  creditFields.forEach(field => {
-
-    const input = field.closest(".field")?.querySelector("input, textarea");
+  creditSection.forEach(field => {
 
     if (paidByCard.checked) {
-      if (input) input.removeAttribute("required");
+      field.removeAttribute("required");
+      field.closest(".field")?.style.opacity = "0.5";
     } else {
-      if (input) input.setAttribute("required","required");
+      field.setAttribute("required","required");
+      field.closest(".field")?.style.opacity = "1";
     }
 
   });
