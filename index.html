@@ -633,3 +633,56 @@ Submit Application
 </button>
 
 </div>
+
+<script>
+
+/* Legal trading style logic */
+
+const legalRadios = document.querySelectorAll('input[name="legal_style"]');
+const ltdFields = document.getElementById('ltd-fields');
+const soleFields = document.getElementById('sole-fields');
+
+legalRadios.forEach(radio => {
+  radio.addEventListener("change", () => {
+
+    ltdFields.classList.remove("visible");
+    soleFields.classList.remove("visible");
+
+    if (radio.value === "limited") {
+      ltdFields.classList.add("visible");
+    }
+
+    if (radio.value === "sole_trader") {
+      soleFields.classList.add("visible");
+    }
+
+  });
+});
+
+
+/* Paid by card logic */
+
+const paidByCard = document.getElementById("paid-by-card");
+
+paidByCard.addEventListener("change", () => {
+
+  const creditFields = document.querySelectorAll(".credit-dependent");
+
+  creditFields.forEach(field => {
+
+    const input = field.closest(".field")?.querySelector("input, textarea");
+
+    if (paidByCard.checked) {
+      if (input) input.removeAttribute("required");
+    } else {
+      if (input) input.setAttribute("required","required");
+    }
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
