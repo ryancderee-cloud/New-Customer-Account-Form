@@ -65,7 +65,7 @@
     height: 100%;
     border-radius: inherit;
     background: linear-gradient(90deg, var(--orange), var(--orange-light));
-    transition: width 0.2s ease;
+    transition: width 0.3s ease;
   }
 
   .form-progress-text {
@@ -122,7 +122,6 @@
     color: var(--white);
     line-height: 1;
   }
-
 
   /* FORM CARD */
   .form-card {
@@ -381,7 +380,6 @@
   }
 
   .signature-typed-input { margin-top: 10px; }
-
   .signature-typed-input.hidden,
   .signature-pad-area.hidden { display: none; }
 
@@ -437,7 +435,7 @@
     <h1>New Customer Account Form</h1>
   </div>
 
-  <form action="https://plain-butterfly-365c.ryancderee.workers.dev/" method="POST" enctype="multipart/form-data">
+  <form id="main-form" action="https://plain-butterfly-365c.ryancderee.workers.dev/" method="POST" enctype="multipart/form-data">
   <div class="form-card">
 
     <!-- CLIENT INFORMATION -->
@@ -462,9 +460,9 @@
         <label style="display:block;margin-bottom:10px">Estimated Turnover <span class="req">*</span></label>
         <div class="option-grid">
           <div class="option-item"><input type="radio" name="turnover" value="500k_plus" id="t1" required><label for="t1">&gt; £500k</label></div>
-          <div class="option-item"><input type="radio" name="turnover" value="50_100k" id="t2" required><label for="t2">&gt;£50k &lt;£100k</label></div>
-          <div class="option-item"><input type="radio" name="turnover" value="10_50k" id="t3" required><label for="t3">&gt;£10k &lt;£50k</label></div>
-          <div class="option-item"><input type="radio" name="turnover" value="under_10k" id="t4" required><label for="t4">&lt; £10k</label></div>
+          <div class="option-item"><input type="radio" name="turnover" value="50_100k" id="t2"><label for="t2">&gt;£50k &lt;£100k</label></div>
+          <div class="option-item"><input type="radio" name="turnover" value="10_50k" id="t3"><label for="t3">&gt;£10k &lt;£50k</label></div>
+          <div class="option-item"><input type="radio" name="turnover" value="under_10k" id="t4"><label for="t4">&lt; £10k</label></div>
         </div>
       </div>
     </div>
@@ -481,7 +479,7 @@
     <div class="form-section">
       <div class="section-title">Credit Required</div>
       <div class="field-grid">
-        <div class="field"><label>Amount of Credit Required (£) <span class="req credit-dependent">*</span></label><input type="number" name="credit_required" placeholder="e.g. 5000" min="0" required></div>
+        <div class="field"><label>Amount of Credit Required (£) <span class="req credit-dependent">*</span></label><input type="number" name="credit_required" id="credit_required" placeholder="e.g. 5000" min="0" required></div>
       </div>
       <div class="info-box">
         <strong>Data Protection Notice</strong>
@@ -489,14 +487,13 @@
       </div>
     </div>
 
-
     <!-- LEGAL TRADING STYLE -->
     <div class="form-section">
       <div class="section-title">Legal Trading Style</div>
       <div class="option-grid">
         <div class="option-item"><input type="radio" name="legal_style" value="limited" id="ls1" required><label for="ls1">Limited Company</label></div>
-        <div class="option-item"><input type="radio" name="legal_style" value="sole_trader" id="ls2" required><label for="ls2">Sole Trader</label></div>
-        <div class="option-item"><input type="radio" name="legal_style" value="partnership" id="ls3" required><label for="ls3">Partnership</label></div>
+        <div class="option-item"><input type="radio" name="legal_style" value="sole_trader" id="ls2"><label for="ls2">Sole Trader</label></div>
+        <div class="option-item"><input type="radio" name="legal_style" value="partnership" id="ls3"><label for="ls3">Partnership</label></div>
       </div>
       <div class="conditional-fields" id="ltd-fields">
         <div class="field"><label>LTD Company Registration Number <span class="req">*</span></label><input type="text" name="ltd_reg_number" placeholder="e.g. 12345678"></div>
@@ -586,7 +583,7 @@
               <input type="text" id="typed-signature-name" placeholder="Type full name as electronic signature">
             </div>
 
-            <input type="hidden" name="signed" id="signed-value" required>
+            <input type="hidden" name="signed" id="signed-value">
           </div>
         </div>
         <div class="field"><label>Name <span class="req">*</span></label><input type="text" name="name" placeholder="Print full name" required></div>
@@ -594,242 +591,250 @@
         <div class="field"><label>Date <span class="req">*</span></label><input type="date" name="date" required></div>
       </div>
     </div>
-<!-- SUBMIT -->
-<!-- SUBMIT -->
-<div class="submit-area">
 
-<div style="max-width:520px; color:rgba(255,255,255,0.85); font-size:13px; line-height:1.6;">
-<label style="display:flex; gap:10px; align-items:flex-start; text-transform:none; letter-spacing:0;">
-<input type="checkbox" name="consent" required style="margin-top:4px;">
-<span>
-I confirm that the information provided in this application is true and accurate and that I am authorised to submit this application on behalf of the business.
-I consent to De Ree UK processing the information provided for the purposes of assessing this application for a trade account.
-Information may be shared with credit reference agencies or finance providers where necessary.
-All personal data will be processed in accordance with applicable UK data protection legislation.
-</span>
-</label>
-</div>
+  </div><!-- /form-card -->
 
-<div>
-<p class="submit-note">Fields marked <span>*</span> are required.</p>
-<p class="submit-note" style="margin-top:10px;color:rgba(255,255,255,0.75)">
-De Ree UK<br>
-The Haweswater Suite, Paragon House, Paragon Business Park<br>
-Chorley New Road, Bolton, BL6 6HG, England<br><br>
-VAT Number: GB 864 8482 77<br>
-Registered in England: 05357534
-</p>
-</div>
+  <!-- SUBMIT -->
+  <div class="submit-area">
 
-<!-- TURNSTILE -->
-<div style="margin-top:18px;">
-<div class="cf-turnstile" data-sitekey="0x4AAAAAACqNClAJr4RNyx7Y"></div>
-</div>
+    <div style="max-width:520px; color:rgba(255,255,255,0.85); font-size:13px; line-height:1.6;">
+      <label style="display:flex; gap:10px; align-items:flex-start; text-transform:none; letter-spacing:0;">
+        <input type="checkbox" name="consent" id="consent-checkbox" required style="margin-top:4px;">
+        <span>
+          I confirm that the information provided in this application is true and accurate and that I am authorised to submit this application on behalf of the business.
+          I consent to De Ree UK processing the information provided for the purposes of assessing this application for a trade account.
+          Information may be shared with credit reference agencies or finance providers where necessary.
+          All personal data will be processed in accordance with applicable UK data protection legislation.
+        </span>
+      </label>
+    </div>
 
-<button type="submit">
-Submit Application
-<svg viewBox="0 0 24 24">
-<line x1="5" y1="12" x2="19" y2="12"/>
-<polyline points="12 5 19 12 12 19"/>
-</svg>
-</button>
+    <div>
+      <p class="submit-note">Fields marked <span>*</span> are required.</p>
+      <p class="submit-note" style="margin-top:10px;color:rgba(255,255,255,0.75)">
+        De Ree UK<br>
+        The Haweswater Suite, Paragon House, Paragon Business Park<br>
+        Chorley New Road, Bolton, BL6 6HG, England<br><br>
+        VAT Number: GB 864 8482 77<br>
+        Registered in England: 05357534
+      </p>
+    </div>
 
-</div>
+    <!-- TURNSTILE -->
+    <div style="margin-top:18px;">
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAACqNClAJr4RNyx7Y"></div>
+    </div>
 
+    <button type="submit">
+      Submit Application
+      <svg viewBox="0 0 24 24">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </button>
+
+  </div>
+
+  </form>
+
+</div><!-- /page-wrapper -->
+
+<!-- SINGLE CLEAN SCRIPT BLOCK -->
 <script>
-
-/* Legal trading style logic */
-
-const legalRadios = document.querySelectorAll('input[name="legal_style"]');
-const ltdFields = document.getElementById('ltd-fields');
-const soleFields = document.getElementById('sole-fields');
-
-legalRadios.forEach(radio => {
-  radio.addEventListener("change", () => {
-
-    ltdFields.classList.remove("visible");
-    soleFields.classList.remove("visible");
-
-    if (radio.value === "limited") {
-      ltdFields.classList.add("visible");
-    }
-
-    if (radio.value === "sole_trader") {
-      soleFields.classList.add("visible");
-    }
-
-  });
-});
-
-
-/* =========================
-   PAID BY CARD LOGIC
-========================= */
-
-const paidByCard = document.getElementById("paid-by-card");
-
-paidByCard.addEventListener("change", () => {
-
-  const creditSection = document.querySelectorAll(
-    'input[name="credit_required"], \
-     input[name="bank_name"], \
-     textarea[name="bank_address"], \
-     input[name="bank_postcode"], \
-     input[name="sort_code"], \
-     input[name="account_number"], \
-     input[name="ref1_name"], \
-     textarea[name="ref1_address"], \
-     input[name="ref1_postcode"], \
-     input[name="ref1_tel"], \
-     input[name="ref1_fax"]'
-  );
-
-  creditSection.forEach(field => {
-
-    if (paidByCard.checked) {
-      field.removeAttribute("required");
-      field.closest(".field")?.style.opacity = "0.5";
-    } else {
-      field.setAttribute("required","required");
-      field.closest(".field")?.style.opacity = "1";
-    }
-
-  });
-
-});
-
-<script>
-
 document.addEventListener("DOMContentLoaded", function () {
 
-/* Legal trading style logic */
+  /* =============================================
+     1. LEGAL TRADING STYLE – show/hide panels
+  ============================================= */
+  var legalRadios = document.querySelectorAll('input[name="legal_style"]');
+  var ltdFields   = document.getElementById("ltd-fields");
+  var soleFields  = document.getElementById("sole-fields");
 
-const legalRadios = document.querySelectorAll('input[name="legal_style"]');
-const ltdFields = document.getElementById('ltd-fields');
-const soleFields = document.getElementById('sole-fields');
+  legalRadios.forEach(function(radio) {
+    radio.addEventListener("change", function() {
+      ltdFields.classList.remove("visible");
+      soleFields.classList.remove("visible");
 
-legalRadios.forEach(radio => {
-radio.addEventListener("change", () => {
+      if (this.value === "limited")     ltdFields.classList.add("visible");
+      if (this.value === "sole_trader") soleFields.classList.add("visible");
 
-ltdFields.classList.remove("visible");
-soleFields.classList.remove("visible");
+      updateProgress();
+    });
+  });
 
-if (radio.value === "limited") {
-ltdFields.classList.add("visible");
-}
+  /* =============================================
+     2. PAID BY CARD – toggle required fields
+  ============================================= */
+  var paidByCard = document.getElementById("paid-by-card");
 
-if (radio.value === "sole_trader") {
-soleFields.classList.add("visible");
-}
+  // All field names that become optional when paying by card
+  var creditFieldSelectors = [
+    'input[name="credit_required"]',
+    'input[name="bank_name"]',
+    'textarea[name="bank_address"]',
+    'input[name="bank_postcode"]',
+    'input[name="sort_code"]',
+    'input[name="account_number"]',
+    'input[name="ref1_name"]',
+    'textarea[name="ref1_address"]',
+    'input[name="ref1_postcode"]',
+    'input[name="ref1_tel"]',
+    'input[name="ref1_fax"]'
+  ].join(", ");
 
-});
-});
+  paidByCard.addEventListener("change", function() {
+    var fields = document.querySelectorAll(creditFieldSelectors);
+    fields.forEach(function(field) {
+      if (paidByCard.checked) {
+        field.removeAttribute("required");
+        var wrap = field.closest(".field");
+        if (wrap) wrap.style.opacity = "0.5";
+      } else {
+        field.setAttribute("required", "required");
+        var wrap = field.closest(".field");
+        if (wrap) wrap.style.opacity = "1";
+      }
+    });
 
+    // Also dim/undim the credit-dependent asterisks
+    document.querySelectorAll(".credit-dependent").forEach(function(el) {
+      el.style.opacity = paidByCard.checked ? "0.3" : "1";
+    });
 
-/* Paid by card logic */
+    updateProgress();
+  });
 
-const paidByCard = document.getElementById("paid-by-card");
+  /* =============================================
+     3. PROGRESS BAR
+  ============================================= */
+  var progressBar  = document.getElementById("form-progress-bar");
+  var progressText = document.getElementById("form-progress-text");
 
-paidByCard.addEventListener("change", () => {
+  function updateProgress() {
+    var form = document.getElementById("main-form");
 
-const creditSection = document.querySelectorAll(
-'input[name="credit_required"],
- input[name="bank_name"],
- textarea[name="bank_address"],
- input[name="bank_postcode"],
- input[name="sort_code"],
- input[name="account_number"],
- input[name="ref1_name"],
- textarea[name="ref1_address"],
- input[name="ref1_postcode"],
- input[name="ref1_tel"],
- input[name="ref1_fax"]'
-);
+    // Gather all required fields that are currently visible
+    var requiredFields = [];
+    form.querySelectorAll("[required]").forEach(function(el) {
+      // Skip hidden inputs and elements inside hidden containers
+      if (el.type === "hidden") return;
+      var parent = el.closest(".conditional-fields");
+      if (parent && !parent.classList.contains("visible")) return;
+      requiredFields.push(el);
+    });
 
-creditSection.forEach(field => {
+    var filled = 0;
+    requiredFields.forEach(function(el) {
+      if (el.type === "radio" || el.type === "checkbox") {
+        // For radio groups, check if any in the group is checked
+        var groupName = el.name;
+        if (form.querySelector('input[name="' + groupName + '"]:checked')) {
+          filled++; // count each group only once via deduplication below
+        }
+      } else if (el.value && el.value.trim() !== "") {
+        filled++;
+      }
+    });
 
-if (paidByCard.checked) {
-field.removeAttribute("required");
-field.closest(".field")?.style.opacity = "0.5";
-} else {
-field.setAttribute("required","required");
-field.closest(".field")?.style.opacity = "1";
-}
+    // Deduplicate radio groups – count each named group as 1 field
+    var radioGroups = {};
+    requiredFields.forEach(function(el) {
+      if (el.type === "radio") radioGroups[el.name] = true;
+    });
+    var radioGroupNames = Object.keys(radioGroups);
 
-});
+    // Re-count properly: non-radio filled + radio groups filled
+    var nonRadioRequired = requiredFields.filter(function(el) {
+      return el.type !== "radio";
+    });
+    var nonRadioFilled = nonRadioRequired.filter(function(el) {
+      if (el.type === "checkbox") return el.checked;
+      return el.value && el.value.trim() !== "";
+    }).length;
 
-});
+    var radioGroupsFilled = radioGroupNames.filter(function(name) {
+      return form.querySelector('input[name="' + name + '"]:checked') !== null;
+    }).length;
 
-});
+    var totalFields = nonRadioRequired.length + radioGroupNames.length;
+    var totalFilled = nonRadioFilled + radioGroupsFilled;
 
-<script>
+    var pct = totalFields > 0 ? Math.round((totalFilled / totalFields) * 100) : 0;
+    pct = Math.min(pct, 100);
 
-document.addEventListener("DOMContentLoaded", function () {
+    progressBar.style.width = pct + "%";
+    progressText.textContent = "Form progress: " + pct + "%";
+  }
 
-/* =========================
-   LEGAL TRADING STYLE
-========================= */
+  // Listen on all inputs/textareas/selects for progress updates
+  document.getElementById("main-form").addEventListener("input", updateProgress);
+  document.getElementById("main-form").addEventListener("change", updateProgress);
 
-const legalRadios = document.querySelectorAll('input[name="legal_style"]');
-const ltdFields = document.getElementById("ltd-fields");
-const soleFields = document.getElementById("sole-fields");
+  // Run once on load
+  updateProgress();
 
-legalRadios.forEach(radio => {
+  /* =============================================
+     4. SIGNATURE PAD
+  ============================================= */
+  var canvas  = document.getElementById("signature-canvas");
+  var ctx     = canvas.getContext("2d");
+  var drawing = false;
 
-radio.addEventListener("change", function(){
+  function resizeCanvas() {
+    var rect = canvas.getBoundingClientRect();
+    canvas.width  = rect.width;
+    canvas.height = rect.height;
+  }
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
 
-ltdFields.classList.remove("visible");
-soleFields.classList.remove("visible");
+  function getPos(e) {
+    var rect = canvas.getBoundingClientRect();
+    if (e.touches) {
+      return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+    }
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  }
 
-if (this.value === "limited") {
-ltdFields.classList.add("visible");
-}
+  canvas.addEventListener("mousedown",  function(e) { drawing = true; ctx.beginPath(); var p = getPos(e); ctx.moveTo(p.x, p.y); });
+  canvas.addEventListener("mousemove",  function(e) { if (!drawing) return; var p = getPos(e); ctx.lineTo(p.x, p.y); ctx.strokeStyle = "#1A315A"; ctx.lineWidth = 2; ctx.lineCap = "round"; ctx.stroke(); });
+  canvas.addEventListener("mouseup",    function()  { drawing = false; saveSignature(); });
+  canvas.addEventListener("mouseleave", function()  { drawing = false; });
+  canvas.addEventListener("touchstart", function(e) { e.preventDefault(); drawing = true; ctx.beginPath(); var p = getPos(e); ctx.moveTo(p.x, p.y); }, { passive: false });
+  canvas.addEventListener("touchmove",  function(e) { e.preventDefault(); if (!drawing) return; var p = getPos(e); ctx.lineTo(p.x, p.y); ctx.strokeStyle = "#1A315A"; ctx.lineWidth = 2; ctx.lineCap = "round"; ctx.stroke(); }, { passive: false });
+  canvas.addEventListener("touchend",   function()  { drawing = false; saveSignature(); });
 
-if (this.value === "sole_trader") {
-soleFields.classList.add("visible");
-}
+  function saveSignature() {
+    document.getElementById("signed-value").value = canvas.toDataURL();
+  }
 
-});
+  document.getElementById("clear-signature").addEventListener("click", function() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    document.getElementById("signed-value").value = "";
+  });
 
-});
+  // Signature mode toggle (draw vs type)
+  document.querySelectorAll('input[name="signature_mode"]').forEach(function(radio) {
+    radio.addEventListener("change", function() {
+      var padArea    = document.getElementById("signature-pad-area");
+      var typedInput = document.getElementById("signature-typed-input");
+      if (this.value === "draw") {
+        padArea.classList.remove("hidden");
+        typedInput.classList.add("hidden");
+      } else {
+        padArea.classList.add("hidden");
+        typedInput.classList.remove("hidden");
+      }
+    });
+  });
 
+  // Typed signature → hidden field
+  document.getElementById("typed-signature-name").addEventListener("input", function() {
+    document.getElementById("signed-value").value = this.value;
+  });
 
-/* =========================
-   PAID BY CARD
-========================= */
-
-const paidByCard = document.getElementById("paid-by-card");
-
-paidByCard.addEventListener("change", function(){
-
-const creditFields = document.querySelectorAll(
-'input[name="credit_required"],
- input[name="bank_name"],
- textarea[name="bank_address"],
- input[name="bank_postcode"],
- input[name="sort_code"],
- input[name="account_number"],
- input[name="ref1_name"],
- textarea[name="ref1_address"],
- input[name="ref1_postcode"],
- input[name="ref1_tel"],
- input[name="ref1_fax"]'
-);
-
-creditFields.forEach(field => {
-
-if (paidByCard.checked) {
-field.removeAttribute("required");
-field.closest(".field")?.style.opacity = "0.5";
-} else {
-field.setAttribute("required","required");
-field.closest(".field")?.style.opacity = "1";
-}
-
-});
-
-});
-
-});
-
+}); // end DOMContentLoaded
 </script>
+
+</body>
+</html>
