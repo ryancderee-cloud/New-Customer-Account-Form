@@ -542,11 +542,11 @@
         <div>
           <p class="ref-sub">Reference 2</p>
           <div style="display:flex;flex-direction:column;gap:14px">
-            <div class="field"><label>Name</label><input type="text" name="ref2_name" required></div>
-            <div class="field"><label>Address</label><textarea name="ref2_address" style="min-height:65px" required></textarea></div>
-            <div class="field"><label>Post Code</label><input type="text" name="ref2_postcode" required></div>
-            <div class="field"><label>Telephone</label><input type="tel" name="ref2_tel" required></div>
-            <div class="field"><label>Fax</label><input type="tel" name="ref2_fax" required></div>
+            <div class="field"><label>Name</label><input type="text" name="ref2_name"></div>
+            <div class="field"><label>Address</label><textarea name="ref2_address" style="min-height:65px"></textarea></div>
+            <div class="field"><label>Post Code</label><input type="text" name="ref2_postcode"></div>
+            <div class="field"><label>Telephone</label><input type="tel" name="ref2_tel"></div>
+            <div class="field"><label>Fax</label><input type="tel" name="ref2_fax"></div>
           </div>
         </div>
       </div>
@@ -591,7 +591,16 @@
 
     <!-- SUBMIT -->
     <div class="submit-area">
-      <p class="submit-note">Fields marked <span>*</span> are required.</p>
+      <div>
+        <p class="submit-note">Fields marked <span>*</span> are required.</p>
+        <p class="submit-note" style="margin-top:10px;color:rgba(255,255,255,0.75)">
+          De Ree UK<br>
+          The Haweswater Suite, Paragon House, Paragon Business Park<br>
+          Chorley New Road, Bolton, BL6 6HG, England<br><br>
+          Vat Number: GB 864 8482 77<br>
+          Registered in England: 05357534
+        </p>
+      </div>
       <button type="submit">
         Submit Application
         <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -618,7 +627,7 @@
   const paidByCardInput = document.getElementById('paid-by-card');
   const creditRequiredInput = document.querySelector('input[name="credit_required"]');
   const bankAndTradeFields = document.querySelectorAll(
-    'input[name="bank_name"], textarea[name="bank_address"], input[name="bank_postcode"], input[name="sort_code"], input[name="account_number"], input[name^="ref1_"], input[name^="ref2_"], textarea[name^="ref1_"], textarea[name^="ref2_"]'
+    'input[name="bank_name"], textarea[name="bank_address"], input[name="bank_postcode"], input[name="sort_code"], input[name="account_number"], input[name^="ref1_"], textarea[name^="ref1_"]'
   );
   const creditDependentRequiredMarkers = document.querySelectorAll('.credit-dependent');
   const signatureCanvas = document.getElementById('signature-canvas');
