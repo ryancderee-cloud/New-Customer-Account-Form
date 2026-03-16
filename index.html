@@ -9,8 +9,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
 <style>
   :root {
     --navy: #1A315A;
@@ -77,7 +75,6 @@
     text-transform: uppercase;
   }
 
-  /* HEADER */
   .site-header {
     background: var(--white);
     border-radius: 16px 16px 0 0;
@@ -106,7 +103,6 @@
   .contact-item a:hover { color: var(--orange); }
   .ci { width: 13px; height: 13px; flex-shrink: 0; stroke: var(--orange); fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 
-  /* TITLE BAR */
   .form-title-bar {
     background: var(--navy);
     padding: 26px 40px;
@@ -123,7 +119,6 @@
     line-height: 1;
   }
 
-  /* FORM CARD */
   .form-card {
     background: var(--white);
     box-shadow: var(--shadow-lg);
@@ -132,7 +127,6 @@
     animation: fadeUp 0.6s ease 0.1s both;
   }
 
-  /* SECTIONS */
   .form-section { padding: 32px 40px; border-bottom: 1px solid var(--border-light); }
   .form-section:last-of-type { border-bottom: none; }
 
@@ -154,7 +148,6 @@
     margin-bottom: 24px;
   }
 
-  /* GRID */
   .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
   .field-grid .full { grid-column: 1 / -1; }
 
@@ -166,7 +159,6 @@
   .two-col-refs { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
   @media (max-width: 600px) { .two-col-refs { grid-template-columns: 1fr; } }
 
-  /* FIELDS */
   .field { display: flex; flex-direction: column; gap: 5px; }
 
   label {
@@ -208,7 +200,6 @@
 
   textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
 
-  /* OPTION CARDS */
   .option-grid { display: flex; flex-wrap: wrap; gap: 10px; }
   .option-item { position: relative; }
   .option-item input { position: absolute; opacity: 0; width: 0; height: 0; }
@@ -243,7 +234,6 @@
   }
 
   .option-item.checkbox label::before { border-radius: 4px; }
-
   .option-item input:checked + label { border-color: var(--navy); background: rgba(26,49,90,0.05); }
 
   .option-item input:checked + label::before {
@@ -262,7 +252,6 @@
 
   .option-item label:hover { border-color: var(--navy-light); background: rgba(26,49,90,0.03); }
 
-  /* CONDITIONAL */
   .conditional-fields {
     display: none;
     margin-top: 16px;
@@ -273,7 +262,6 @@
   }
   .conditional-fields.visible { display: block; }
 
-  /* INFO BOX */
   .info-box {
     background: var(--orange-pale);
     border: 1px solid rgba(232,98,42,0.2);
@@ -286,18 +274,39 @@
   }
   .info-box strong { display: block; color: var(--orange); font-weight: 600; margin-bottom: 5px; }
 
-  /* SUBMIT */
   .submit-area {
     background: linear-gradient(135deg, var(--navy-dark), var(--navy));
     padding: 32px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
   }
 
-  .submit-note { color: rgba(255,255,255,0.5); font-size: 13px; max-width: 320px; line-height: 1.5; }
+  .submit-consent {
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .submit-consent label {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    text-transform: none;
+    letter-spacing: 0;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .submit-consent input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; }
+
+  .submit-bottom {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .submit-note { color: rgba(255,255,255,0.5); font-size: 13px; line-height: 1.5; flex: 1; min-width: 200px; }
   .submit-note span { color: var(--orange-light); }
 
   button[type="submit"] {
@@ -320,45 +329,99 @@
     white-space: nowrap;
   }
 
-  button[type="submit"]:hover { background: var(--orange-light); transform: translateY(-1px); box-shadow: 0 6px 28px rgba(232,98,42,0.45); }
+  button[type="submit"]:hover {
+    background: var(--orange-light);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 28px rgba(232,98,42,0.45);
+  }
+
   button[type="submit"] svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
 
   .ref-sub { font-size: 12px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 14px; text-transform: uppercase; }
+
+  /* =============================================
+     SIGNATURE STYLES
+  ============================================= */
 
   .signature-wrap {
     border: 1.5px solid var(--border);
     border-radius: 10px;
     background: var(--input-bg);
-    padding: 14px;
+    padding: 18px;
   }
 
-  .signature-mode {
+  /* Option selector row */
+  .sig-options {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 12px;
-  }
-
-  .signature-mode label {
-    text-transform: none;
-    letter-spacing: 0.2px;
-    font-size: 13px;
-    display: inline-flex;
     align-items: center;
-    gap: 6px;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-bottom: 20px;
   }
 
+  .sig-opt-btn {
+    flex: 1;
+    min-width: 140px;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 0;
+    background: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  .sig-opt-btn:first-child { border-radius: 8px 0 0 8px; }
+  .sig-opt-btn:last-child  { border-radius: 0 8px 8px 0; }
+
+  .sig-opt-btn:not(:first-child) { margin-left: -1.5px; }
+
+  .sig-opt-btn:hover { border-color: var(--navy-light); color: var(--navy); z-index: 1; position: relative; }
+
+  .sig-opt-btn.active {
+    border-color: var(--navy);
+    background: var(--navy);
+    color: var(--white);
+    z-index: 2;
+    position: relative;
+  }
+
+  .sig-or {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 0 10px;
+    flex-shrink: 0;
+    background: var(--input-bg);
+    z-index: 3;
+    position: relative;
+  }
+
+  /* Panels */
+  .sig-panel { display: none; }
+  .sig-panel.visible { display: block; }
+
+  /* Draw */
   .signature-canvas {
     width: 100%;
-    height: 170px;
+    height: 160px;
     border: 1.5px dashed var(--border);
     border-radius: 8px;
     background: var(--white);
     touch-action: none;
     cursor: crosshair;
+    display: block;
   }
 
-  .signature-actions {
+  .sig-actions {
     margin-top: 10px;
     display: flex;
     align-items: center;
@@ -368,23 +431,101 @@
 
   .sig-hint { font-size: 12px; color: var(--text-muted); }
 
-  .clear-signature-btn {
+  .sig-clear-btn {
     border: 1px solid var(--border);
     background: var(--white);
     color: var(--navy);
-    border-radius: 8px;
-    padding: 8px 12px;
+    border-radius: 6px;
+    padding: 6px 12px;
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
+    font-family: 'Barlow', sans-serif;
   }
 
-  .signature-typed-input { margin-top: 10px; }
-  .signature-typed-input.hidden,
-  .signature-pad-area.hidden { display: none; }
+  /* Upload */
+  .sig-upload-area {
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    padding: 28px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .sig-upload-area:hover,
+  .sig-upload-area.drag-over { border-color: var(--navy); background: rgba(26,49,90,0.03); }
+
+  .sig-upload-area input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+  }
+
+  .sig-upload-icon {
+    width: 34px; height: 34px;
+    stroke: var(--text-muted); fill: none;
+    stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+    margin: 0 auto 10px; display: block;
+  }
+
+  .sig-upload-text { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+  .sig-upload-text strong { color: var(--navy); }
+
+  .sig-preview { display: none; margin-top: 14px; text-align: center; }
+  .sig-preview img { max-height: 80px; max-width: 100%; border-bottom: 1.5px solid var(--border); padding-bottom: 6px; }
+
+  .sig-preview-actions {
+    margin-top: 8px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+
+  .sig-preview-name { font-size: 12px; color: var(--text-muted); }
+
+  .sig-remove-btn {
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--navy);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  /* Type */
+  .sig-typed-field {
+    font-family: 'Georgia', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--navy);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    padding: 14px 16px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+  }
+
+  .sig-typed-field:focus {
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(26,49,90,0.08);
+  }
+
+  .sig-typed-field::placeholder { color: #c0cadb; font-style: italic; }
 
   @keyframes fadeDown { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp   { from { opacity: 0; transform: translateY(16px);  } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
@@ -399,34 +540,15 @@
 
   <!-- HEADER -->
   <div class="site-header">
-    <img
-      class="logo-img"
+    <img class="logo-img"
       src="https://www.dropbox.com/scl/fi/rp3bol8mcbb2wn0dxck62/logo-no-background.png?rlkey=jdwkdmcamkl4079uzrtpp1a7h&st=cz51wdwo&raw=1"
-      alt="De Ree UK logo"
-      referrerpolicy="no-referrer"
-    >
-
+      alt="De Ree UK logo" referrerpolicy="no-referrer">
     <div class="contact-grid">
-      <div class="contact-item">
-        <svg class="ci" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.08 4.18 2 2 0 0 1 5.06 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L9.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23 16.92z"/></svg>
-        <a href="tel:01204669445">01204 669 445</a>
-      </div>
-      <div class="contact-item">
-        <svg class="ci" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
-        <a href="mailto:cs@deree-uk.com">cs@deree-uk.com</a>
-      </div>
-      <div class="contact-item">
-        <svg class="ci" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-        <a href="tel:01204669439">01204 669 439 (fax)</a>
-      </div>
-      <div class="contact-item">
-        <svg class="ci" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        <a href="https://www.deree-uk.com" target="_blank">www.deree-uk.com</a>
-      </div>
-      <div class="contact-item" style="grid-column:1/-1">
-        <svg class="ci" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        <a href="https://www.linkedin.com/company/deree-uk" target="_blank">linkedin.com/company/deree-uk</a>
-      </div>
+      <div class="contact-item"><svg class="ci" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.08 4.18 2 2 0 0 1 5.06 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L9.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23 16.92z"/></svg><a href="tel:01204669445">01204 669 445</a></div>
+      <div class="contact-item"><svg class="ci" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg><a href="/cdn-cgi/l/email-protection#24475764404156414109514f0a474b49"><span class="__cf_email__" data-cfemail="1e7d6d5e7a7b6c7b7b336b75307d7173">[email&#160;protected]</span></a></div>
+      <div class="contact-item"><svg class="ci" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg><a href="tel:01204669439">01204 669 439 (fax)</a></div>
+      <div class="contact-item"><svg class="ci" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="https://www.deree-uk.com" target="_blank">www.deree-uk.com</a></div>
+      <div class="contact-item" style="grid-column:1/-1"><svg class="ci" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg><a href="https://www.linkedin.com/company/deree-uk" target="_blank">linkedin.com/company/deree-uk</a></div>
     </div>
   </div>
 
@@ -558,34 +680,67 @@
     <!-- DECLARATION -->
     <div class="form-section">
       <div class="section-title">Declaration</div>
-      <p style="font-size:13.5px;line-height:1.65;color:var(--text-muted);margin-bottom:22px">
-        <strong style="color:var(--navy);display:block;margin-bottom:4px">Declaration (to be signed by an authorised representative of the company)</strong>
-        I/We confirm that the information provided above is true and accurate to the best of our knowledge.
-      </p>
+      <div class="info-box" style="margin-bottom:22px;margin-top:0">
+        <strong>Declaration</strong>
+        I confirm that the information provided in this application is true and accurate and that I am authorised to submit this application on behalf of the business. I consent to De Ree UK processing the information provided for the purposes of assessing this application for a trade account. Information may be shared with credit reference agencies or finance providers where necessary. All personal data will be processed in accordance with applicable UK data protection legislation.
+      </div>
       <div class="field-grid">
+
+        <!-- SIGNATURE WIDGET -->
         <div class="field full">
-          <label>Signed <span class="req">*</span></label>
+          <label>Signature <span class="req">*</span></label>
           <div class="signature-wrap">
-            <div class="signature-mode">
-              <label><input type="radio" name="signature_mode" value="draw" checked> Draw signature</label>
-              <label><input type="radio" name="signature_mode" value="type"> Type name instead</label>
+
+            <!-- Option selector -->
+            <div class="sig-options">
+              <button type="button" class="sig-opt-btn active" data-tab="draw">✏ Draw Signature</button>
+              <span class="sig-or">or</span>
+              <button type="button" class="sig-opt-btn" data-tab="upload">↑ Upload Image</button>
+              <span class="sig-or">or</span>
+              <button type="button" class="sig-opt-btn" data-tab="type">✎ Type Name</button>
             </div>
 
-            <div class="signature-pad-area" id="signature-pad-area">
-              <canvas id="signature-canvas" class="signature-canvas" aria-label="Signature pad"></canvas>
-              <div class="signature-actions">
+            <!-- DRAW PANEL -->
+            <div class="sig-panel visible" id="sig-panel-draw">
+              <canvas id="signature-canvas" class="signature-canvas"></canvas>
+              <div class="sig-actions">
                 <span class="sig-hint">Sign above using mouse or touch.</span>
-                <button type="button" id="clear-signature" class="clear-signature-btn">Clear signature</button>
+                <button type="button" class="sig-clear-btn" id="clear-signature">Clear</button>
               </div>
             </div>
 
-            <div class="signature-typed-input hidden" id="signature-typed-input">
-              <input type="text" id="typed-signature-name" placeholder="Type full name as electronic signature">
+            <!-- UPLOAD PANEL -->
+            <div class="sig-panel" id="sig-panel-upload">
+              <div class="sig-upload-area" id="sig-upload-area">
+                <input type="file" id="sig-file-input" accept="image/*">
+                <svg class="sig-upload-icon" viewBox="0 0 24 24">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                <p class="sig-upload-text"><strong>Click to upload</strong> or drag and drop<br>PNG, JPG, GIF up to 2MB</p>
+              </div>
+              <div class="sig-preview" id="sig-preview">
+                <img id="sig-preview-img" src="" alt="Signature preview">
+                <div class="sig-preview-actions">
+                  <span class="sig-preview-name" id="sig-preview-name"></span>
+                  <button type="button" class="sig-remove-btn" id="sig-remove-btn">Remove</button>
+                </div>
+              </div>
             </div>
 
+            <!-- TYPE PANEL -->
+            <div class="sig-panel" id="sig-panel-type">
+              <input type="text" class="sig-typed-field" id="sig-typed-field" placeholder="Type your full name…" autocomplete="off">
+              <p class="sig-hint" style="margin-top:8px">Your typed name will be used as your electronic signature.</p>
+            </div>
+
+            <!-- Hidden field submitted with form -->
             <input type="hidden" name="signed" id="signed-value">
+
           </div>
         </div>
+
         <div class="field"><label>Name <span class="req">*</span></label><input type="text" name="name" placeholder="Print full name" required></div>
         <div class="field"><label>Position / Title <span class="req">*</span></label><input type="text" name="position" placeholder="e.g. Director, Manager" required></div>
         <div class="field"><label>Date <span class="req">*</span></label><input type="date" name="date" required></div>
@@ -594,57 +749,38 @@
 
   </div><!-- /form-card -->
 
-  <!-- SUBMIT -->
+  <!-- SUBMIT AREA -->
   <div class="submit-area">
 
-    <div style="max-width:520px; color:rgba(255,255,255,0.85); font-size:13px; line-height:1.6;">
-      <label style="display:flex; gap:10px; align-items:flex-start; text-transform:none; letter-spacing:0;">
-        <input type="checkbox" name="consent" id="consent-checkbox" required style="margin-top:4px;">
-        <span>
-          I confirm that the information provided in this application is true and accurate and that I am authorised to submit this application on behalf of the business.
-          I consent to De Ree UK processing the information provided for the purposes of assessing this application for a trade account.
-          Information may be shared with credit reference agencies or finance providers where necessary.
-          All personal data will be processed in accordance with applicable UK data protection legislation.
-        </span>
-      </label>
+    <div class="submit-bottom">
+      <div class="submit-note">
+        <p>Fields marked <span>*</span> are required.</p>
+        <p style="margin-top:10px; color:rgba(255,255,255,0.6)">
+          De Ree UK<br>
+          The Haweswater Suite, Paragon House<br>
+          Paragon Business Park, Chorley New Road<br>
+          Bolton, BL6 6HG, England<br><br>
+          VAT: GB 864 8482 77 &nbsp;·&nbsp; Reg: 05357534
+        </p>
+      </div>
+      <button type="submit" id="submit-btn">
+        Submit Application
+        <svg viewBox="0 0 24 24">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </button>
     </div>
-
-    <div>
-      <p class="submit-note">Fields marked <span>*</span> are required.</p>
-      <p class="submit-note" style="margin-top:10px;color:rgba(255,255,255,0.75)">
-        De Ree UK<br>
-        The Haweswater Suite, Paragon House, Paragon Business Park<br>
-        Chorley New Road, Bolton, BL6 6HG, England<br><br>
-        VAT Number: GB 864 8482 77<br>
-        Registered in England: 05357534
-      </p>
-    </div>
-
-    <!-- TURNSTILE -->
-    <div style="margin-top:18px;">
-      <div class="cf-turnstile" data-sitekey="0x4AAAAAACqNClAJr4RNyx7Y"></div>
-    </div>
-
-    <button type="submit">
-      Submit Application
-      <svg viewBox="0 0 24 24">
-        <line x1="5" y1="12" x2="19" y2="12"/>
-        <polyline points="12 5 19 12 12 19"/>
-      </svg>
-    </button>
-
   </div>
 
   </form>
-
 </div><!-- /page-wrapper -->
 
-<!-- SINGLE CLEAN SCRIPT BLOCK -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 document.addEventListener("DOMContentLoaded", function () {
 
   /* =============================================
-     1. LEGAL TRADING STYLE – show/hide panels
+     1. LEGAL TRADING STYLE
   ============================================= */
   var legalRadios = document.querySelectorAll('input[name="legal_style"]');
   var ltdFields   = document.getElementById("ltd-fields");
@@ -654,31 +790,23 @@ document.addEventListener("DOMContentLoaded", function () {
     radio.addEventListener("change", function() {
       ltdFields.classList.remove("visible");
       soleFields.classList.remove("visible");
-
       if (this.value === "limited")     ltdFields.classList.add("visible");
       if (this.value === "sole_trader") soleFields.classList.add("visible");
-
       updateProgress();
     });
   });
 
   /* =============================================
-     2. PAID BY CARD – toggle required fields
+     2. PAID BY CARD
   ============================================= */
   var paidByCard = document.getElementById("paid-by-card");
 
-  // All field names that become optional when paying by card
   var creditFieldSelectors = [
-    'input[name="credit_required"]',
-    'input[name="bank_name"]',
-    'textarea[name="bank_address"]',
-    'input[name="bank_postcode"]',
-    'input[name="sort_code"]',
-    'input[name="account_number"]',
-    'input[name="ref1_name"]',
-    'textarea[name="ref1_address"]',
-    'input[name="ref1_postcode"]',
-    'input[name="ref1_tel"]',
+    'input[name="credit_required"]', 'input[name="bank_name"]',
+    'textarea[name="bank_address"]', 'input[name="bank_postcode"]',
+    'input[name="sort_code"]',       'input[name="account_number"]',
+    'input[name="ref1_name"]',       'textarea[name="ref1_address"]',
+    'input[name="ref1_postcode"]',   'input[name="ref1_tel"]',
     'input[name="ref1_fax"]'
   ].join(", ");
 
@@ -695,12 +823,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (wrap) wrap.style.opacity = "1";
       }
     });
-
-    // Also dim/undim the credit-dependent asterisks
     document.querySelectorAll(".credit-dependent").forEach(function(el) {
       el.style.opacity = paidByCard.checked ? "0.3" : "1";
     });
-
     updateProgress();
   });
 
@@ -712,41 +837,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateProgress() {
     var form = document.getElementById("main-form");
-
-    // Gather all required fields that are currently visible
     var requiredFields = [];
     form.querySelectorAll("[required]").forEach(function(el) {
-      // Skip hidden inputs and elements inside hidden containers
       if (el.type === "hidden") return;
       var parent = el.closest(".conditional-fields");
       if (parent && !parent.classList.contains("visible")) return;
       requiredFields.push(el);
     });
 
-    var filled = 0;
-    requiredFields.forEach(function(el) {
-      if (el.type === "radio" || el.type === "checkbox") {
-        // For radio groups, check if any in the group is checked
-        var groupName = el.name;
-        if (form.querySelector('input[name="' + groupName + '"]:checked')) {
-          filled++; // count each group only once via deduplication below
-        }
-      } else if (el.value && el.value.trim() !== "") {
-        filled++;
-      }
-    });
-
-    // Deduplicate radio groups – count each named group as 1 field
     var radioGroups = {};
-    requiredFields.forEach(function(el) {
-      if (el.type === "radio") radioGroups[el.name] = true;
-    });
+    requiredFields.forEach(function(el) { if (el.type === "radio") radioGroups[el.name] = true; });
     var radioGroupNames = Object.keys(radioGroups);
+    var nonRadioRequired = requiredFields.filter(function(el) { return el.type !== "radio"; });
 
-    // Re-count properly: non-radio filled + radio groups filled
-    var nonRadioRequired = requiredFields.filter(function(el) {
-      return el.type !== "radio";
-    });
     var nonRadioFilled = nonRadioRequired.filter(function(el) {
       if (el.type === "checkbox") return el.checked;
       return el.value && el.value.trim() !== "";
@@ -758,83 +861,126 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var totalFields = nonRadioRequired.length + radioGroupNames.length;
     var totalFilled = nonRadioFilled + radioGroupsFilled;
-
-    var pct = totalFields > 0 ? Math.round((totalFilled / totalFields) * 100) : 0;
-    pct = Math.min(pct, 100);
-
+    var pct = totalFields > 0 ? Math.min(Math.round((totalFilled / totalFields) * 100), 100) : 0;
     progressBar.style.width = pct + "%";
     progressText.textContent = "Form progress: " + pct + "%";
   }
 
-  // Listen on all inputs/textareas/selects for progress updates
   document.getElementById("main-form").addEventListener("input", updateProgress);
   document.getElementById("main-form").addEventListener("change", updateProgress);
-
-  // Run once on load
   updateProgress();
 
   /* =============================================
-     4. SIGNATURE PAD
+     4. SIGNATURE – TAB SWITCHING
+  ============================================= */
+  var signedVal = document.getElementById("signed-value");
+  var activeTab = "draw";
+
+  document.querySelectorAll(".sig-opt-btn").forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      activeTab = this.dataset.tab;
+
+      // Update button styles
+      document.querySelectorAll(".sig-opt-btn").forEach(function(b) { b.classList.remove("active"); });
+      this.classList.add("active");
+
+      // Show correct panel
+      document.querySelectorAll(".sig-panel").forEach(function(p) { p.classList.remove("visible"); });
+      document.getElementById("sig-panel-" + activeTab).classList.add("visible");
+
+      // Clear signed value on tab switch
+      signedVal.value = "";
+
+      // Resize canvas if switching to draw
+      if (activeTab === "draw") resizeCanvas();
+    });
+  });
+
+  /* =============================================
+     5. SIGNATURE – DRAW
   ============================================= */
   var canvas  = document.getElementById("signature-canvas");
   var ctx     = canvas.getContext("2d");
   var drawing = false;
 
   function resizeCanvas() {
-    var rect = canvas.getBoundingClientRect();
+    var data = canvas.toDataURL(); // preserve drawing if any
+    var rect  = canvas.getBoundingClientRect();
     canvas.width  = rect.width;
     canvas.height = rect.height;
+    // Redraw if there was content
+    if (signedVal.value && activeTab === "draw") {
+      var img = new Image();
+      img.onload = function() { ctx.drawImage(img, 0, 0); };
+      img.src = data;
+    }
   }
   resizeCanvas();
   window.addEventListener("resize", resizeCanvas);
 
   function getPos(e) {
     var rect = canvas.getBoundingClientRect();
-    if (e.touches) {
-      return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
-    }
+    if (e.touches) return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
     return { x: e.clientX - rect.left, y: e.clientY - rect.top };
   }
 
+  function saveDraw() { signedVal.value = canvas.toDataURL(); updateProgress(); }
+
   canvas.addEventListener("mousedown",  function(e) { drawing = true; ctx.beginPath(); var p = getPos(e); ctx.moveTo(p.x, p.y); });
   canvas.addEventListener("mousemove",  function(e) { if (!drawing) return; var p = getPos(e); ctx.lineTo(p.x, p.y); ctx.strokeStyle = "#1A315A"; ctx.lineWidth = 2; ctx.lineCap = "round"; ctx.stroke(); });
-  canvas.addEventListener("mouseup",    function()  { drawing = false; saveSignature(); });
+  canvas.addEventListener("mouseup",    function()  { drawing = false; saveDraw(); });
   canvas.addEventListener("mouseleave", function()  { drawing = false; });
   canvas.addEventListener("touchstart", function(e) { e.preventDefault(); drawing = true; ctx.beginPath(); var p = getPos(e); ctx.moveTo(p.x, p.y); }, { passive: false });
   canvas.addEventListener("touchmove",  function(e) { e.preventDefault(); if (!drawing) return; var p = getPos(e); ctx.lineTo(p.x, p.y); ctx.strokeStyle = "#1A315A"; ctx.lineWidth = 2; ctx.lineCap = "round"; ctx.stroke(); }, { passive: false });
-  canvas.addEventListener("touchend",   function()  { drawing = false; saveSignature(); });
-
-  function saveSignature() {
-    document.getElementById("signed-value").value = canvas.toDataURL();
-  }
+  canvas.addEventListener("touchend",   function()  { drawing = false; saveDraw(); });
 
   document.getElementById("clear-signature").addEventListener("click", function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    document.getElementById("signed-value").value = "";
+    signedVal.value = "";
+    updateProgress();
   });
 
-  // Signature mode toggle (draw vs type)
-  document.querySelectorAll('input[name="signature_mode"]').forEach(function(radio) {
-    radio.addEventListener("change", function() {
-      var padArea    = document.getElementById("signature-pad-area");
-      var typedInput = document.getElementById("signature-typed-input");
-      if (this.value === "draw") {
-        padArea.classList.remove("hidden");
-        typedInput.classList.add("hidden");
-      } else {
-        padArea.classList.add("hidden");
-        typedInput.classList.remove("hidden");
-      }
-    });
+  /* =============================================
+     6. SIGNATURE – UPLOAD
+  ============================================= */
+  var fileInput   = document.getElementById("sig-file-input");
+  var uploadArea  = document.getElementById("sig-upload-area");
+  var preview     = document.getElementById("sig-preview");
+  var previewImg  = document.getElementById("sig-preview-img");
+  var previewName = document.getElementById("sig-preview-name");
+  var removeBtn   = document.getElementById("sig-remove-btn");
+
+  function handleFile(file) {
+    if (!file || !file.type.startsWith("image/")) return;
+    if (file.size > 2 * 1024 * 1024) { alert("Please upload an image under 2MB."); return; }
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      previewImg.src     = e.target.result;
+      previewName.textContent = file.name;
+      preview.style.display    = "block";
+      uploadArea.style.display = "none";
+      signedVal.value = e.target.result;
+      updateProgress();
+    };
+    reader.readAsDataURL(file);
+  }
+
+  fileInput.addEventListener("change", function() { handleFile(this.files[0]); });
+
+  uploadArea.addEventListener("dragover",  function(e) { e.preventDefault(); this.classList.add("drag-over"); });
+  uploadArea.addEventListener("dragleave", function()  { this.classList.remove("drag-over"); });
+  uploadArea.addEventListener("drop",      function(e) { e.preventDefault(); this.classList.remove("drag-over"); handleFile(e.dataTransfer.files[0]); });
+
+  removeBtn.addEventListener("click", function() {
+    fileInput.value = "";
+    previewImg.src  = "";
+    previewName.textContent  = "";
+    preview.style.display    = "none";
+    uploadArea.style.display = "block";
+    signedVal.value = "";
+    updateProgress();
   });
 
-  // Typed signature → hidden field
-  document.getElementById("typed-signature-name").addEventListener("input", function() {
-    document.getElementById("signed-value").value = this.value;
-  });
-
-}); // end DOMContentLoaded
-</script>
-
-</body>
-</html>
+  /* =============================================
+     7. SIGNATURE – TYPE
+  ================
