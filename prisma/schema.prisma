@@ -1,0 +1,96 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = env("DATABASE_PROVIDER")
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id            String      @id @default(cuid())
+  name          String
+  sku           String      @unique
+  description   String
+  category      String
+  packetSize    String?
+  frontImageUrl String
+  backImageUrl  String
+  isActive      Boolean     @default(true)
+  layoutCells   LayoutCell[]
+  orderItems    OrderItem[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model StandTemplate {
+  id                 String       @id @default(cuid())
+  name               String
+  type               String
+  backgroundImageUrl String
+  width              Int
+  height             Int
+  gridColumns        Int
+  gridRows           Int
+  layouts            StandLayout[]
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+}
+
+model StandLayout {
+  id              String        @id @default(cuid())
+  standTemplateId String
+  standTemplate   StandTemplate @relation(fields: [standTemplateId], references: [id], onDelete: Cascade)
+  name            String
+  slug            String        @unique
+  status          LayoutStatus  @default(DRAFT)
+  season          String?
+  cells           LayoutCell[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model LayoutCell {
+  id           String      @id @default(cuid())
+  standLayoutId String
+  standLayout  StandLayout @relation(fields: [standLayoutId], references: [id], onDelete: Cascade)
+  rowIndex     Int
+  columnIndex  Int
+  cellKey      String
+  productId    String?
+  product      Product?    @relation(fields: [productId], references: [id], onDelete: SetNull)
+  xOffset      Float       @default(0)
+  yOffset      Float       @default(0)
+  widthAdjust  Float       @default(0)
+  heightAdjust Float       @default(0)
+  zIndex       Int         @default(1)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  @@unique([standLayoutId, rowIndex, columnIndex])
+  @@unique([standLayoutId, cellKey])
+}
+
+model Order {
+  id           String      @id @default(cuid())
+  retailerName String
+  contactName  String
+  email        String
+  notes        String?
+  items        OrderItem[]
+  createdAt    DateTime    @default(now())
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Restrict)
+  quantity  Int
+}
+
+enum LayoutStatus {
+  DRAFT
+  PUBLISHED
+}

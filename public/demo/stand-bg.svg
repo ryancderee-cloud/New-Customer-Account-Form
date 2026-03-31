@@ -1,0 +1,30 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 1700'>
+  <defs>
+    <linearGradient id='metal' x1='0' y1='0' x2='0' y2='1'>
+      <stop offset='0' stop-color='#d9dde2'/><stop offset='1' stop-color='#9aa3af'/>
+    </linearGradient>
+    <linearGradient id='panel' x1='0' y1='0' x2='0' y2='1'>
+      <stop offset='0' stop-color='#fefefe'/><stop offset='1' stop-color='#e5e7eb'/>
+    </linearGradient>
+  </defs>
+
+  <rect width='900' height='1700' fill='#f3f4f6'/>
+
+  <g transform='translate(120 70)'>
+    <rect x='20' y='0' width='640' height='86' fill='#2448b5'/>
+    <rect x='20' y='80' width='640' height='14' fill='#ea7d2f'/>
+    <text x='35' y='52' fill='white' font-family='Arial' font-size='34'>Fantastic Seed Selection</text>
+    <text x='424' y='52' fill='white' font-family='Arial' font-size='34'>Easy Sow, Easy Grow</text>
+
+    <rect x='20' y='94' width='640' height='1060' rx='8' fill='url(#panel)' stroke='#b7bcc4' stroke-width='5'/>
+
+    <g stroke='url(#metal)' stroke-width='10'>
+      <line x1='20' y1='1158' x2='12' y2='1480'/>
+      <line x1='660' y1='1158' x2='668' y2='1480'/>
+      <line x1='12' y1='1480' x2='-40' y2='1600'/>
+      <line x1='668' y1='1480' x2='720' y2='1600'/>
+      <line x1='-40' y1='1600' x2='70' y2='1600'/>
+      <line x1='610' y1='1600' x2='720' y2='1600'/>
+    </g>
+  </g>
+</svg>
